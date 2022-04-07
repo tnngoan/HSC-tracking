@@ -11,7 +11,7 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 flex py-3 border-b-2 shadow-md bg-white justify-between md:justify-around items-center">
       <div className="relative justify-center pl-2 pt-2">
-        <Image src={logo} width={75} height={38} />
+        <Image src={logo} width={75} height={38} alt="HSC logo" />
       </div>
       <nav className="hidden md:flex space-x-10 items-center">
         {navData.map((n) => {
