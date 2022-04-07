@@ -15,7 +15,7 @@ export default function Home() {
       <Header />
       <SearchBanner />
       <main>
-        <div className="flex flex-col md:grid grid-cols-3">
+        <div className="flex flex-col justify-center md:grid grid-cols-3">
           <Card />
           <Card />
           <Card />
