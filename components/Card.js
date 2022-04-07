@@ -6,7 +6,7 @@ const Card = () => {
   return (
     <div className="bg-white rounded-md grid grid-row-3 justify-around align-center border border-1 p-7 m-5 transform transition duration-300 ease-out">
       <div className="flex justify-center my-5">
-        <Image src={logo} width={220} height={115.7} />
+        <Image src={logo} width={220} height={115.7} alt="HSC logo" />
       </div>
       <div className="flex flex-col py-5">
         <p className="text-2xl bold">E-commerce solutions</p>
