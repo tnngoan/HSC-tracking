@@ -1,20 +1,44 @@
 import Image from "next/image";
+import Link from "next/link";
 import logo from "../assets/images/logo.png";
-
+const navData = [
+  { name: "Home", href: "/home" },
+  { name: "About", href: "/about" },
+  { name: "Service", href: "/service" },
+  { name: "Contact", href: "/contact" },
+];
 const Header = () => {
   return (
-    <header className="sticky top-0 z-50 grid grid-cols-3 py-5 border-b-2 shadow-md bg-white">
-      <div className="flex items-center relative justify-center">
-        <Image src={logo} width="110" height="58" />
+    <header className="sticky top-0 z-50 flex py-3 border-b-2 shadow-md bg-white justify-between md:justify-around items-center">
+      <div className="relative justify-center pl-2 pt-2">
+        <Image src={logo} width={75} height={38} />
       </div>
-      <div className="flex items-center justify-between">
-        <a className="px-5 cursor-pointer">Home</a>
-        <a className="px-5 cursor-pointer">About</a>
-        <a className="px-5 cursor-pointer">Service</a>
-        <a className="px-5 cursor-pointer">Help</a>
-      </div>
-      <div className="flex items-center justify-center">
-        <a className="cursor-pointer">Login</a>
+      <nav className="hidden md:flex space-x-10 items-center">
+        {navData.map((n) => {
+          return (
+            <Link key={n.name} href={n.href}>
+              {n.name}
+            </Link>
+          );
+        })}
+      </nav>{" "}
+      <div className="md:hidden">
+        <button>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-10 w-10"
+            fill="white"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M4 6h16M4 12h16m-7 6h7"
+            />
+          </svg>
+        </button>
       </div>
     </header>
   );
