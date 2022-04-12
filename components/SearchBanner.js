@@ -1,8 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import logo from "../assets/images/logo.png";
 
 const SearchBanner = () => {
+  const [keyword, setKeyword] = useState("");
+  const router = useRouter();
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    const searchNum = keyword.trim();
+    if (searchNum.length === 7) {
+      console.log("input is container number", searchNum);
+      dispatch({ type: "SEARCH_BY_CONTAINER", payload: searchNum });
+      router.push({
+        pathname: "/result",
+        query: { type: "container", value: searchNum },
+      });
+    } else if (searchNum.length === 17) {
+      console.log("input is hbl number", searchNum);
+      dispatch({ type: "SEARCH_BY_HBL", payload: searchNum });
+      router.push({
+        pathname: "/result",
+        query: { type: "hbl", value: searchNum },
+      });
+    } else {
+      console.log("invalid", searchNum.length);
+    }
+  };
   return (
     <div className="grid grid-row-3 mb-5 justify-center row-auto h-[450px] sm:h-[400px] lg:h-[500px] xl:h-[540px] 2xl:h-[700px]">
       <div className="flex items-center row-span-2">
@@ -15,11 +40,15 @@ const SearchBanner = () => {
           Hup Soon Cheong Services
         </p>
       </div>
-      <form className="flex justify-center items-center">
+      <form
+        className="flex justify-center items-center"
+        onSubmit={submitHandler}
+      >
         <input
           className="text-green-999 py-3 px-4 border border-2 rounded-md focus-green-999"
           type="text"
-          placeholder="Container number"
+          placeholder="Container or HBL number"
+          onChange={(e) => setKeyword(e.target.value)}
         />
         <button
           className="px-4 py-3 bg-green-999 rounded-md ml-2 text-white border border-2 border-green-999"
