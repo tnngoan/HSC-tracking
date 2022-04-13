@@ -1,2 +1,0 @@
-export const SEARCH_BY_CONTAINER = "SEARCH_BY_CONTAINER";
-export const SEARCH_BY_HBL = "SEARCH_BY_HBL";
