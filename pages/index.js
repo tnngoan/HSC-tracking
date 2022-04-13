@@ -10,7 +10,7 @@ export default function Home() {
       <Head>
         <title>Hup Soon Cheong</title>
         <meta name="description" content="Hup Soon Cheong Service Ltd" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="../../assets/image/logo.png" />
       </Head>
       <Header />
       <SearchBanner />
