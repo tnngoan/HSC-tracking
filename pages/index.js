@@ -10,15 +10,12 @@ export default function Home() {
       <Head>
         <title>Hup Soon Cheong</title>
         <meta name="description" content="Hup Soon Cheong Service Ltd" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="../../assets/image/logo.png" />
       </Head>
       <Header />
       <SearchBanner />
       <main>
         <div className="flex flex-col justify-center md:grid grid-cols-3">
-          <Card />
-          <Card />
-          <Card />
           <Card />
           <Card />
           <Card />

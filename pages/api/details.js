@@ -1,5 +1,7 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+const handler = async (req, res) => {
+  if (req.method === "GET") {
+    console.log( "getting data");
+  }
+};
 
-export default function handler(req, res) {
-  res.status(200).json({ name: 'John Doe' })
-}
+export default handler;
