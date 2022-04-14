@@ -2,9 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import logo from "../assets/images/logo.png";
 const navData = [
-  { name: "Home", href: "/home" },
+  { name: "Home", href: "/" },
   { name: "About", href: "/about" },
-  { name: "Service", href: "/service" },
+  { name: "Service", href: "/privacy" },
   { name: "Contact", href: "/contact" },
 ];
 const Header = () => {
