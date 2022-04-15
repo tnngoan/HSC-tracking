@@ -1,0 +1,41 @@
+{
+  "small-cards-section": [
+    {
+      "title": "Save on shipping",
+      "img": "../../assets/images/",
+      "description": "Create a free account and enjoy discounts on shipping, easy access to saved delivery addresses, quick payments using your stored profile settings and more.",
+      "button": "Start Saving",
+      "path": "/"
+    },
+    {
+      "title": "Take control of your home deliveries",
+      "img": "../../assets/images/",
+      "description": "Sign up for HSC® to place holds, give delivery instructions, sign remotely, and more. Stay informed with tracking alerts and notifications.",
+      "button": "Sign up for free",
+      "path": "/"
+    },
+    {
+      "title": "Hold packages for pickup",
+      "img": "../../assets/images/",
+      "description": "Help keep your deliveries safe when you ask us to hold packages at one of thousands of nearby HSC® locations. Track your package to begin.",
+      "button": "Track and Hold",
+      "path": "/"
+    }
+  ],
+  "wide-cards-section": [
+    {
+      "title": "Ship more sustainably",
+      "img": "../../assets/images/",
+      "description": "Get free packing options for your FedEx Express® shipments that are reusable, recyclable, and made from recycled materials.",
+      "button": "Order yours today",
+      "path": "/"
+    },
+    {
+      "title": "Small businesses making a big impact",
+      "img": "../../assets/images/",
+      "description": "Learn how some of the previous Small Business Grant Contest winners, including 2021 winner JCs Wildlife, are finding new and innovative ways to make their industries more sustainable in the fight against climate change.",
+      "button": "Read the article",
+      "path": "/"
+    }
+  ]
+}
