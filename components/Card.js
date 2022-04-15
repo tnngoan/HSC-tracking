@@ -1,21 +1,21 @@
 import React from "react";
-import logo from "../assets/images/logo.png";
 import Image from "next/image";
+import logo from "../assets/images/logo.png";
 
-const Card = () => {
+const Card = (props) => {
+  console.log(props);
   return (
     <div className="bg-white rounded-md grid grid-row-3 justify-around align-center border border-1 p-7 m-5 transform transition duration-300 ease-out">
       <div className="flex justify-center my-5">
         <Image src={logo} width={220} height={115.7} alt="HSC logo" />
       </div>
       <div className="flex flex-col py-5">
-        <p className="text-2xl bold">E-commerce solutions</p>
-        <p className="text-md">
-          From online shop to your customer’s front door – let us help you with
-          the logistics, so you can concentrate on building your business.
-        </p>
+        <p className="text-2xl bold">{props.title}</p>
+        <p className="text-md">{props.description}</p>
       </div>
-      <button className="rounded-lg border border-1 mt-4 py-4">Learn more</button>
+      <button className="rounded-lg border border-1 mt-4 py-4">
+        {props.button}
+      </button>
     </div>
   );
 };
