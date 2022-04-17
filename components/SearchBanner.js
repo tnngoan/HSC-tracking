@@ -10,18 +10,18 @@ const SearchBanner = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     const searchNum = keyword.trim();
-    if (searchNum.length === 7) {
+    const containerNumLength = 7;
+    const hblNumLength = 17;
+    if (searchNum.length === containerNumLength) {
       console.log("input is container number", searchNum);
-      dispatch({ type: "SEARCH_BY_CONTAINER", payload: searchNum });
       router.push({
-        pathname: "/result",
+        pathname: "/details",
         query: { type: "container", value: searchNum },
       });
-    } else if (searchNum.length === 17) {
+    } else if (searchNum.length === hblNumLength) {
       console.log("input is hbl number", searchNum);
-      dispatch({ type: "SEARCH_BY_HBL", payload: searchNum });
       router.push({
-        pathname: "/result",
+        pathname: "/details",
         query: { type: "hbl", value: searchNum },
       });
     } else {
@@ -47,6 +47,8 @@ const SearchBanner = () => {
         <input
           className="text-green-999 py-3 px-4 border border-2 rounded-md focus-green-999"
           type="text"
+          minLength="7"
+          maxLength="17"
           placeholder="Container or HBL number"
           onChange={(e) => setKeyword(e.target.value)}
         />
