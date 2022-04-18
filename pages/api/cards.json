@@ -1,5 +1,5 @@
 {
-  "small-cards-section": [
+  "small_cards": [
     {
       "title": "Save on shipping",
       "img": "../../assets/images/",
@@ -22,7 +22,7 @@
       "path": "/"
     }
   ],
-  "wide-cards-section": [
+  "wide_cards": [
     {
       "title": "Ship more sustainably",
       "img": "../../assets/images/",
