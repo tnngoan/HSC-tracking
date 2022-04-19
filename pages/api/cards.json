@@ -26,8 +26,15 @@
     {
       "title": "Ship more sustainably",
       "img": "/../../assets/images/",
-      "description": "Get free packing options for your FedEx Express® shipments that are reusable, recyclable, and made from recycled materials.",
+      "description": "Get free packing options for your HSC Premium shipments that are reusable, recyclable, and made from recycled materials.",
       "button": "Order yours today",
+      "path": "/"
+    },
+    {
+      "title": "We’re working to deliver a smaller carbon footprint",
+      "img": "/../../assets/images/",
+      "description": "To help reach our goal of carbon neutral operations by 2040, we’re investing in new technologies—like the transition to all-electric delivery vehicles. See how we’re transitioning, plus other innovative solutions.",
+      "button": "Explore solutions",
       "path": "/"
     },
     {
