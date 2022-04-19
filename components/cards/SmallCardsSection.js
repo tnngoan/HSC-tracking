@@ -3,7 +3,7 @@ import SmallCard from "./SmallCard";
 
 function SmallCardsSection({ cards }) {
   return (
-    <div className="flex flex-col justify-center md:grid grid-cols-3 py-5 my-5">
+    <div className="flex flex-col justify-center md:grid grid-cols-3 py-5 my-20">
       {cards.map((card) => {
         return <SmallCard key={card} card={card} />;
       })}

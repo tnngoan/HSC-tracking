@@ -36,7 +36,7 @@ const SearchBanner = () => {
         </div>
       </div>
       <div className="flex items-center justify-center">
-        <p className="text-2xl md:text-3xl text-center px-5">
+        <p className="text-2xl md:text-4xl text-center px-5 font-semibold">
           Hup Soon Cheong Services
         </p>
       </div>
