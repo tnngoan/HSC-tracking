@@ -3,6 +3,7 @@ import SmallCardsSection from "./cards/SmallCardsSection";
 import WideCard from "./cards/WideCard";
 import SearchBanner from "./SearchBanner";
 import Banner from "./Banner";
+import DownloadSection from "./DownloadSection";
 import cards from "../pages/api/cards.json";
 const smallCards = cards.small_cards;
 const wideCards = cards.wide_cards;
@@ -16,6 +17,7 @@ const Main = () => {
       <WideCard card={wideCards[1]} order="order-first" />
       <SmallCardsSection cards={smallCards} />
       <WideCard card={wideCards[2]} order="order-last" />
+      <DownloadSection />
     </div>
   );
 };
