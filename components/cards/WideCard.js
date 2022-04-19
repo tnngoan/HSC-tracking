@@ -8,10 +8,15 @@ const WideCard = ({ card, order }) => {
       <Image src={logo} width={300} height={180} />
       <div className={`col-span-2 align-center px-5 mx-5 ${order}`}>
         <div className="flex flex-col py-5">
-          <p className="text-2xl bold">{card.title}</p>
+          <p className="text-2xl font-medium">{card.title}</p>
           <p className="text-md">{card.description}</p>
         </div>
-        <a href={card.path} className='uppercase bold text-green-800 underline'>{card.button}</a>
+        <a
+          href={card.path}
+          className="uppercase font-medium text-green-800 underline"
+        >
+          {card.button}
+        </a>
       </div>
     </div>
   );
