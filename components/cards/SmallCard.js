@@ -9,10 +9,10 @@ const SmallCard = ({ card }) => {
         <Image src={logo} width={220} height={115.7} alt="HSC logo" />
       </div>
       <div className="flex flex-col py-5">
-        <p className="text-2xl bold">{card.title}</p>
+        <p className="text-2xl font-medium">{card.title}</p>
         <p className="text-md">{card.description}</p>
       </div>
-      <button className="rounded-lg border border-2 border-green-800 uppercase extra-bold text-green-999 mt-4 py-4">
+      <button className="rounded-lg border border-2 border-green-800 uppercase font-extrabold text-green-999 mt-4 py-4">
         {card.button}
       </button>
     </div>
