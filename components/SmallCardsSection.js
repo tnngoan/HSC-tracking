@@ -1,12 +1,10 @@
 import React from "react";
 import SmallCard from "./SmallCard";
-import cards from "../pages/api/cards.json";
-const smallCards = cards.small_cards;
 
-function SmallCardsSection() {
+function SmallCardsSection({ cards }) {
   return (
     <div className="flex flex-col justify-center md:grid grid-cols-3">
-      {smallCards.map((card) => {
+      {cards.map((card) => {
         return <SmallCard key={card} card={card} />;
       })}
     </div>
