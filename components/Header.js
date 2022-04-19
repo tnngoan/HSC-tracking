@@ -21,7 +21,7 @@ const Header = () => {
             </Link>
           );
         })}
-      </nav>{" "}
+      </nav>
       <div className="md:hidden">
         <button>
           <svg
