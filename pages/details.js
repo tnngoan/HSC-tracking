@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 
-const infoEchange = () => {
+const InfoExchange = () => {
   const router = useRouter();
   const [checking, setChecking] = useState(true);
 
@@ -38,4 +38,4 @@ const infoEchange = () => {
   );
 };
 
-export default infoEchange;
+export default InfoExchange;

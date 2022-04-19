@@ -1,17 +1,16 @@
 import React from "react";
-import CardsSection from "./CardsSection";
+import SmallCardsSection from "./SmallCardsSection";
+import WideCardsSection from "./WideCardsSection";
 import SearchBanner from "./SearchBanner";
 
 const Main = () => {
   return (
-    <div className="px-24">
+    <div className="px-20">
       <SearchBanner />
-      <div className="flex flex-col justify-center md:grid grid-cols-3">
-        <CardsSection />
-      </div>
+      <SmallCardsSection />
+      <WideCardsSection />
     </div>
   );
 };
-
 
 export default Main;
