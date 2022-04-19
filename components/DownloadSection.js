@@ -10,7 +10,7 @@ const playstoreURL =
 
 const DownloadSection = () => {
   return (
-    <div className="flex justify-between items-center py-20">
+    <div className="flex justify-between items-center py-24">
       <div>
         <Image src={mobile} width={480} height={520} />
       </div>
