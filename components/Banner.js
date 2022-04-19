@@ -10,7 +10,7 @@ const Banner = () => {
           account.
         </p>
       </div>
-      <a className="uppercase text-green-999 font-bold hover:text-green-800 cursor-pointer">sign up</a>
+      <a className="uppercase text-green-999 text-2xl font-bold hover:text-green-700 cursor-pointer">sign up</a>
     </div>
   );
 };
