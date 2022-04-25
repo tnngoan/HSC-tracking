@@ -1,0 +1,6 @@
+export { default as Footer } from './Footer'
+export { default as Header } from './Header'
+export { default as Banner } from './Banner'
+export { default as DownloadSection } from './DownloadSection'
+export { default as SearchBanner } from './SearchBanner'
+export { default as Main } from './Main'
