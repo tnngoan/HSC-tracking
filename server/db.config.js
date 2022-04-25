@@ -19,3 +19,5 @@ export const configPool2012 = {
     anableArithAbort: false,
   },
 };
+
+export const configPoolDummy = "Server=localhost;PORT=1433;Database=HSC2012;Integrated Security=true;User Id=MyUser;Password=pass@123;TrustServerCertificate=True"

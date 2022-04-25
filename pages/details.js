@@ -1,39 +1,38 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { searchByContainerNumber } from '../store'
 import axios from "axios";
 
 const InfoExchange = () => {
   const router = useRouter();
-  const [checking, setChecking] = useState(true);
+  const [details, setDetails] = useState([])
+  // const [checking, setChecking] = useState(true);
 
   useEffect(() => {
     const { type, value } = { ...router.query };
-    const numberCheckingType = type;
     const checkDetails = async () => {
       if (!type || !value) {
         return;
       }
       if (type && value) {
-        setChecking(true);
+        // setChecking(true);
         const configHeaders = {
           "Content-Type": "application/json",
         };
-        const response = await axios.get("/api/details", configHeaders);
-        if (response.status !== 200) {
+        const res = await axios.get("/api/details", configHeaders);
+        if (res.status !== 200) {
           router.push({ pathname: "/error" });
         } else {
-          numberCheckingType === "container"
-            ? console.log("searching for container")
-            : console.log("searching for hbl");
+          searchByContainerNumber.setDetails(res.data)
         }
-        setChecking(false);
+        // setChecking(false);
       }
     };
     checkDetails();
   }, [router]);
   return (
     <>
-      <h1>Result</h1>
+      <h1>{details}</h1>
     </>
   );
 };

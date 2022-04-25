@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import logo from "../assets/images/logo.png";
+import logo from "../../assets/images/logo.png";
 
 const SearchBanner = () => {
   const [keyword, setKeyword] = useState("");
