@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { searchByContainerNumber } from '../store'
+import { Spinner } from "../components/layout";
 import axios from "axios";
 
-const InfoExchange = () => {
+const Details = () => {
   const router = useRouter();
   const [details, setDetails] = useState([])
-  // const [checking, setChecking] = useState(true);
+  const [checking, setChecking] = useState(true);
 
   useEffect(() => {
     const { type, value } = { ...router.query };
@@ -15,7 +16,7 @@ const InfoExchange = () => {
         return;
       }
       if (type && value) {
-        // setChecking(true);
+        setChecking(true);
         const configHeaders = {
           "Content-Type": "application/json",
         };
@@ -25,16 +26,17 @@ const InfoExchange = () => {
         } else {
           searchByContainerNumber.setDetails(res.data)
         }
-        // setChecking(false);
+        setChecking(false);
       }
     };
     checkDetails();
   }, [router]);
   return (
     <>
+      {checking ? (<Spinner />) : null}
       <h1>{details}</h1>
     </>
   );
 };
 
-export default InfoExchange;
+export default Details;
