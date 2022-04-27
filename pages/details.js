@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { searchByContainerNumber } from '../store'
 import { Spinner } from "../components/layout";
+import ContainerDetails from "../components/details/ContainerDetails";
 import axios from "axios";
 
 const Details = () => {
@@ -34,7 +35,7 @@ const Details = () => {
   return (
     <>
       {checking ? (<Spinner />) : null}
-      <h1>{details}</h1>
+      {router.query.type === 'container' ? <ContainerDetails /> : null}
     </>
   );
 };
