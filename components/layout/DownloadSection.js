@@ -12,7 +12,7 @@ const DownloadSection = () => {
   return (
     <div className="flex justify-between items-center py-24">
       <div>
-        <Image src={mobile} width={480} height={520} />
+        <Image src={mobile} width={480} height={520} alt='HSC logo' />
       </div>
       <div className="grid grid-row-3">
         <p className="text-3xl row-span-2">Track better with mobile app</p>
@@ -20,6 +20,7 @@ const DownloadSection = () => {
           <Link href={appstoreURL}>
             <a>
               <Image
+                alt='HSC logo'
                 path={"/"}
                 className="cursor-pointer"
                 src={appstore}
@@ -31,6 +32,7 @@ const DownloadSection = () => {
           <Link href={playstoreURL}>
             <a>
               <Image
+                alt='HSC logo'
                 path={"/"}
                 className="cursor-pointer"
                 src={playstore}

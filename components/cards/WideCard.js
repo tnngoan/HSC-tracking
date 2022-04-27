@@ -5,7 +5,7 @@ import logo from "../../assets/images/logo.png";
 const WideCard = ({ card, order }) => {
   return (
     <div className="grid grid-cols-3 gap-12 py-6 my-6">
-      <Image src={logo} width={300} height={180} />
+      <Image alt='HSC logo' src={logo} width={300} height={180} />
       <div className={`col-span-2 align-center px-5 mx-5 ${order}`}>
         <div className="flex flex-col py-5">
           <p className="text-2xl font-medium">{card.title}</p>
