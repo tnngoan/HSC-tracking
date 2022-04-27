@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import Image from "next/image";
+import Logo from './Logo'
 import { useRouter } from "next/router";
-import logo from "../../assets/images/logo.png";
 
 const SearchBanner = () => {
   const [keyword, setKeyword] = useState("");
@@ -29,17 +28,8 @@ const SearchBanner = () => {
     }
   };
   return (
-    <div className="grid grid-row-3 mb-5 justify-center row-auto h-[450px] sm:h-[400px] lg:h-[500px] xl:h-[540px] 2xl:h-[700px]">
-      <div className="flex items-center row-span-2">
-        <div className="px-5">
-          <Image src={logo} width={440} height={231.4} alt="HSC logo" />
-        </div>
-      </div>
-      <div className="flex items-center justify-center">
-        <p className="text-2xl md:text-4xl text-center px-5 font-semibold">
-          Hup Soon Cheong Services
-        </p>
-      </div>
+    <div className="grid grid-row-2 mb-5 justify-center row-auto h-[450px] sm:h-[400px] lg:h-[500px] xl:h-[540px] 2xl:h-[700px]">
+      <Logo />
       <form
         className="flex justify-center items-center"
         onSubmit={submitHandler}
