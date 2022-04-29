@@ -5,7 +5,7 @@ import FormInput from './FormInput'
 
 const ContainerDetails = () => {
     return (
-        <div className='grid grid-rows-2 row-auto justify-around items-start'>
+        <div className='grid grid-rows-2 row-auto justify-around items-center'>
             <div className='justify-center py-6 items-center row-span-2'>
                 <Logo />
             </div>
