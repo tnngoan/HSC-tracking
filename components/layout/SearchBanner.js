@@ -24,7 +24,7 @@ const SearchBanner = () => {
         query: { type: "hbl", value: searchNum },
       });
     } else {
-      console.log("invalid", searchNum.length);
+      console.log("invalid input", searchNum.length);
     }
   };
   return (

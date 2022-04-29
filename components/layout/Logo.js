@@ -5,7 +5,7 @@ import logo from "../../assets/images/logo.png";
 const Logo = () => {
     return (
         <div className="grid grid-row-2">
-            <div className="flex items-center row-span-2">
+            <div className="flex justify-center items-center row-span-2">
                 <div className="px-5">
                     <Image src={logo} width={440} height={231.4} alt="HSC logo" />
                 </div>
