@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { searchByContainerNumber } from '../store'
 import { Spinner } from "../components/layout";
-import ContainerDetails from "../components/details/ContainerDetails";
+import Details from "../components/details/Details";
 import axios from "axios";
 
-const Details = () => {
+const details = () => {
   const router = useRouter();
   const [details, setDetails] = useState([])
   const [checking, setChecking] = useState(true);
@@ -35,9 +35,9 @@ const Details = () => {
   return (
     <>
       {checking ? (<Spinner />) : null}
-      {router.query.type === 'container' ? <ContainerDetails /> : null}
+      {router.query.type === 'container' ? <Details /> : null}
     </>
   );
 };
 
-export default Details;
+export default details;
