@@ -13,7 +13,7 @@ const Footer = () => {
         <p>
           <span>
             <a
-              href="https://www.hupsooncheong.com.sg/privacy"
+              href="/privacy"
               className="text-blue-500"
             >
               Terms and policy{" "}
