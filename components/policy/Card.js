@@ -1,12 +1,26 @@
 import React from 'react'
 
-const Card = ({ policy }) => {
+const Card = ({ policies }) => {
+    function hasChild(x) {
+        if (x.length === 1) {
+            return x[0]
+        }
+    }
     return (
         <div>
-            {policy.map((obj, i) => {
-                return <div key={i}>
-                    <h1 className="font-bold">{Object.keys(obj)[0]}</h1>
-                </div>
+            {policies.map((policy, i) => {
+                let no = i + 1
+                let title = Object.keys(policy)
+                let contents = policy[title]
+                console.log(contents)
+                return (
+                    <div key={i}>
+                        <h1 className="font-bold">{no + ". " + title}</h1>
+                        {contents.map((content, id) => {
+                            return <p key={id}>{Object.keys(content)}</p>
+                        })}
+                    </div>
+                )
             })}
         </div>
     )
