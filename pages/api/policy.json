@@ -4,36 +4,48 @@
             {
                 "When you use our website, any service we provide or in your interaction with us, the personal data we may collect includes:": [
                     {
-                        "Data collected directly from you": {
-                            "This may be done through this website, over the phone, by email, or in person when you meet our staff or representatives. The data collected may include, but is not limited to:": [
-                                [
-                                    "your contact information, including your (first and last) name, (billing and/or delivery) address, birthdate and email address and, optionally, your telephone number. Weneed your e-mail address and (optionally) telephone number so that we may contact you if we have questions or information for you regarding your order or the service that we are providing or will provide to you",
-                                    "other information required to be able to process your order or to provide you with the service, such as information concerning the products you have ordered or the service we are providing to you, the billing and/or delivery address, banking and/or credit card details",
-                                    "if you have created an online profile or account, the preferences and interests stored in such profile or account (please see below for further information concerning the profiles)",
-                                    "if you have contacted customer service, the details of this contact and the contact history."
+                        "Data collected directly from you": [
+                            {
+                                "This may be done through this website, over the phone, by email, or in person when you meet our staff or representatives. The data collected may include, but is not limited to:": [
+                                    [
+                                        "your contact information, including your (first and last) name, (billing and/or delivery) address, birthdate and email address and, optionally, your telephone number. Weneed your e-mail address and (optionally) telephone number so that we may contact you if we have questions or information for you regarding your order or the service that we are providing or will provide to you",
+                                        "other information required to be able to process your order or to provide you with the service, such as information concerning the products you have ordered or the service we are providing to you, the billing and/or delivery address, banking and/or credit card details",
+                                        "if you have created an online profile or account, the preferences and interests stored in such profile or account (please see below for further information concerning the profiles)",
+                                        "if you have contacted customer service, the details of this contact and the contact history."
+                                    ]
                                 ]
-                            ]
-                        },
-                        "Data collected by automated means": {
-                            "Various technologies may be used on our website and our mobile and web-based applications in order to make them more user-friendly, effective and secure. Such technologies may lead to data being collected automatically by us or by third parties on behalf of us. This data does not generally, but may, contain a user’s personal data. Examples of such technologies include:": [
-                                [
+                            }
+                        ],
+                        "Data collected by automated means": [
+                            {
+                                "Various technologies may be used on our website and our mobile and web-based applications in order to make them more user-friendly, effective and secure. Such technologies may lead to data being collected automatically by us or by third parties on behalf of us. This data does not generally, but may, contain a user’s personal data. Examples of such technologies include:": [
                                     {
-                                        "Click-stream data": {
-                                            "A visit to one of our websites results in data that is transmitted from your browser to our server being automatically collected and stored by us or by third parties on behalf of us. This data can include, in particular, the following:": [
-                                                "the visitor’s IP address",
-                                                "the referral URL (the site from which the visitor has come)",
-                                                "the pages visited on our website",
-                                                "information about the browser used (browser type and version, operating system, etc)."
-                                            ]
-                                        },
-                                        "Cookies": "A number of places on our website and our mobile and web-based applications make use of cookies. These are essentially small text files that are stored on your computer’s hard drive or your user device by your web browser. We can use cookies to identify the owner of a user account and to store articles in a shopping basket during the purchasing process. In other words, cookies help to make our website or our (mobile and web-based) applications more user-friendly, more effective and more secure. The cookies usually used by us are so-called “session cookies”, which are automatically deleted at the end of the visit to the relevant website. By default, web browsers enable the use of cookies but this function can also be disabled. However, this will result in some services not being available. It is also possible to manually delete cookies after their use via the web browser. More information may be available from your web browser provider.",
-                                        "Flash cookies": "A particular form of cookie is the flash cookie. In contrast to normal cookies, these cookies are not created and saved by the web browser but are governed by the Adobe Flash plug-in. These can contain more information than normal cookies and cannot be deleted or disabled via the browser; this is only possible if you follow instructions available from the Adobe Flash Player website. You can also obtain more information about these cookies on that website.",
-                                        "Web beacons and tracking links": "Web beacons (also known as pixel tags and clear GIFs) involve graphics that are not apparent to the user. Tracking links and/or similar technologies consist of a few lines of programming code and can be embedded in our website or our (mobile) applications. In conjunction with cookies, these are primarily used for statistical analysis purposes. This technology can also be used for tracking traffic patterns on websites, as well as finding out if an e-mail has been received and opened and to see if there has been any response.",
-                                        "Web analytics": "Web analytics is the term given to a method for collecting and assessing the behaviour of visitors to websites and (mobile) applications. This includes the analysis of traffic patterns in order, for example, to determine the frequency of visits to certain parts of a website or (mobile) application, or to find out what information and services our visitors are most interested in. For these purposes, we primarily make use of click-stream data and the other techniques listed above. Web analytics are carried out by Google Analytics and/or other selected parties. You can find out more information about the processing of web analytics data by Google Analytics in paragraph 7 below."
+                                        "Click-stream data": [
+                                            {
+                                                "A visit to one of our websites results in data that is transmitted from your browser to our server being automatically collected and stored by us or by third parties on behalf of us. This data can include, in particular, the following:": [
+                                                    "the visitor’s IP address",
+                                                    "the referral URL (the site from which the visitor has come)",
+                                                    "the pages visited on our website",
+                                                    "information about the browser used (browser type and version, operating system, etc)."
+                                                ]
+                                            }
+                                        ],
+                                        "Cookies": [
+                                            "A number of places on our website and our mobile and web-based applications make use of cookies. These are essentially small text files that are stored on your computer’s hard drive or your user device by your web browser. We can use cookies to identify the owner of a user account and to store articles in a shopping basket during the purchasing process. In other words, cookies help to make our website or our (mobile and web-based) applications more user-friendly, more effective and more secure. The cookies usually used by us are so-called “session cookies”, which are automatically deleted at the end of the visit to the relevant website. By default, web browsers enable the use of cookies but this function can also be disabled. However, this will result in some services not being available. It is also possible to manually delete cookies after their use via the web browser. More information may be available from your web browser provider."
+                                        ],
+                                        "Flash cookies": [
+                                            "A particular form of cookie is the flash cookie. In contrast to normal cookies, these cookies are not created and saved by the web browser but are governed by the Adobe Flash plug-in. These can contain more information than normal cookies and cannot be deleted or disabled via the browser; this is only possible if you follow instructions available from the Adobe Flash Player website. You can also obtain more information about these cookies on that website."
+                                        ],
+                                        "Web beacons and tracking links": [
+                                            "Web beacons (also known as pixel tags and clear GIFs) involve graphics that are not apparent to the user. Tracking links and/or similar technologies consist of a few lines of programming code and can be embedded in our website or our (mobile) applications. In conjunction with cookies, these are primarily used for statistical analysis purposes. This technology can also be used for tracking traffic patterns on websites, as well as finding out if an e-mail has been received and opened and to see if there has been any response."
+                                        ],
+                                        "Web analytics": [
+                                            "Web analytics is the term given to a method for collecting and assessing the behaviour of visitors to websites and (mobile) applications. This includes the analysis of traffic patterns in order, for example, to determine the frequency of visits to certain parts of a website or (mobile) application, or to find out what information and services our visitors are most interested in. For these purposes, we primarily make use of click-stream data and the other techniques listed above. Web analytics are carried out by Google Analytics and/or other selected parties. You can find out more information about the processing of web analytics data by Google Analytics in paragraph 7 below."
+                                        ]
                                     }
                                 ]
-                            ]
-                        }
+                            }
+                        ]
                     }
                 ]
             }
@@ -85,7 +97,7 @@
     },
     {
         "Third Parties": [
-            " This Policy only applies to our website and information that we collect from you. Our websites may contain links to other websites which are not owned or maintained by us. When visiting these third party websites or disclosing your personal data to third parties (including buyers or sellers on our website), you should read their privacy policies, or ask relevant questions before you disclose your personal data, We are not responsible for the collection, use or disclosure of your personal data by such third parties."
+            "This Policy only applies to our website and information that we collect from you. Our websites may contain links to other websites which are not owned or maintained by us. When visiting these third party websites or disclosing your personal data to third parties (including buyers or sellers on our website), you should read their privacy policies, or ask relevant questions before you disclose your personal data, We are not responsible for the collection, use or disclosure of your personal data by such third parties."
         ]
     },
     {
@@ -139,7 +151,7 @@
                     "Email: AppSupport@hsc.sg"
                 ]
             },
-            " All requests for correction or for access to your personal data must be in writing. We will endeavor to respond to your request within 30 days, and if that is not possible, we will inform you of the time by which we will respond to you.",
+            "All requests for correction or for access to your personal data must be in writing. We will endeavor to respond to your request within 30 days, and if that is not possible, we will inform you of the time by which we will respond to you.",
             "We may be prevented by law from complying with any request that you may make. We may also decline any request that you may make if the law permits us to do so.",
             "In many circumstances, we need to use your personal data in order for us to provide you with products or services which you require or have requested. If you do not provide us with the required personal data, or if you do not accept the amended Policy or withdraw your consent to our use and/or disclosure of your personal data for these purposes, it may not be possible for us to continue to serve you or provide you with the products and services that you require or have requested.",
             "We may charge you a fee for responding to your request for access to the personal data which we hold about you, or for information about the ways in which we have (or may have) used your personal data. If a fee is to be charged, we will inform you of the amount beforehand and respond to your request after payment is received."
@@ -161,9 +173,13 @@
                         ]
                     },
                     {
-                        "by telephone. Such complaints must:": {
-                            "be made to the Hup Soon Cheong Data Protection Officer at": "Telephone: 66726111"
-                        }
+                        "by telephone. Such complaints must:": [
+                            {
+                                "be made to the Hup Soon Cheong Data Protection Officer at": [
+                                    "Telephone: 66726111"
+                                ]
+                            }
+                        ]
                     }
                 ]
             },

@@ -1,27 +1,21 @@
 import React from 'react'
 
 const Card = ({ policies }) => {
-    function hasChild(x) {
-        if (x.length === 1) {
-            return x[0]
-        }
+    console.log(policies)
+    function findChild(array) {
+        array.forEach((item, index) => {
+            console.log("item", item)
+            if (typeof item === 'string') return item[0];
+            if (typeof item === 'object') {
+                findChild(item[Object.keys(item)])
+                return Object.keys(item)
+            }
+        })
     }
+
     return (
         <div>
-            {policies.map((policy, i) => {
-                let no = i + 1
-                let title = Object.keys(policy)
-                let contents = policy[title]
-                console.log(contents)
-                return (
-                    <div key={i}>
-                        <h1 className="font-bold">{no + ". " + title}</h1>
-                        {contents.map((content, id) => {
-                            return <p key={id}>{Object.keys(content)}</p>
-                        })}
-                    </div>
-                )
-            })}
+            {findChild(policies)}
         </div>
     )
 }
