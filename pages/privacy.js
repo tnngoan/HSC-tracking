@@ -1,5 +1,5 @@
 import React from 'react'
-import { Intro, Card } from '../components/policy'
+import { Intro, PolicyContent } from '../components/policy'
 import policies from '../pages/api/policy.json'
 import Head from 'next/head'
 
@@ -10,7 +10,7 @@ const privacy = () => {
         <meta name="keywords" content="HSC Term and Privacy" />
       </Head>
       <Intro />
-      <Card policies={policies} />
+      <PolicyContent policies={policies} />
     </div>
   )
 }
