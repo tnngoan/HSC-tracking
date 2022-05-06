@@ -1,4 +1,5 @@
 import React from 'react'
+import Tag from './Tag'
 
 const PolicyContent = ({ policies }) => {
     return (
@@ -9,21 +10,27 @@ const PolicyContent = ({ policies }) => {
                         <summary className='cursor-pointer font-extrabold text-lg'>{Object.keys(p)}</summary>
                         {p[Object.keys(p)].map((item, id) => {
                             {
-                                if (typeof item === 'string') { return item } else {
+                                if (typeof item === 'string') {
+                                    return
+                                    (<p>{item}</p>)
+                                } else {
                                     return (
-                                        <div>
+                                        <React.Fragment>
                                             <details key={id} className='px-4'>
                                                 <summary className='flex cursor-pointer font-semibold text-lg'>
                                                     {Object.keys(item)}
 
                                                 </summary>
                                             </details>
-                                            {console.log(item[Object.keys(item)])}
-                                        </div>
+                                            {(item[Object.keys(item)]).map((item, id) => {
+                                                if (typeof item === 'string') { return item } else {
+                                                    return Object.keys(item)
+                                                }
+                                            })}
+                                        </React.Fragment>
                                     )
                                 }
                             }
-                            { console.log((item)) }
                         })}
                     </details>
                 )
