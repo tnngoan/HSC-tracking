@@ -6,15 +6,21 @@ const PolicyContent = ({ policies }) => {
             {policies.map((p, i) => {
                 return (
                     <details key={i}>
-                        <summary className='cursor-pointer font-bold'>{Object.keys(p)}</summary>
+                        <summary className='cursor-pointer font-extrabold text-lg'>{Object.keys(p)}</summary>
                         {p[Object.keys(p)].map((item, id) => {
                             {
                                 if (typeof item === 'string') { return item } else {
-                                    return <details key={id}>
-                                        <summary className='cursor-pointer font-semibold'>
-                                            {Object.keys(item)}
-                                        </summary>
-                                    </details>
+                                    return (
+                                        <div>
+                                            <details key={id} className='px-4'>
+                                                <summary className='flex cursor-pointer font-semibold text-lg'>
+                                                    {Object.keys(item)}
+
+                                                </summary>
+                                            </details>
+                                            {console.log(item[Object.keys(item)])}
+                                        </div>
+                                    )
                                 }
                             }
                             { console.log((item)) }
