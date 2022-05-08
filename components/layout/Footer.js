@@ -17,11 +17,10 @@ const Footer = () => {
               href="/privacy"
               className="text-blue-500"
             >
-              Terms and policy{" "}
+              Terms and policy
             </Link>
             |
             <a href="mailto:appsupport@hsc.sg" className="text-blue-500">
-              {" "}
               appsupport@hsc.sg
             </a>
           </span>
