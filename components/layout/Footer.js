@@ -1,4 +1,5 @@
 import React from "react";
+import Link from 'next/link';
 
 const Footer = () => {
   return (
@@ -12,15 +13,14 @@ const Footer = () => {
         </p>
         <p>
           <span>
-            <a
-              href="https://www.hupsooncheong.com.sg/privacy"
+            <Link
+              href="/privacy"
               className="text-blue-500"
             >
-              Terms and policy{" "}
-            </a>
+              Terms and policy
+            </Link>
             |
             <a href="mailto:appsupport@hsc.sg" className="text-blue-500">
-              {" "}
               appsupport@hsc.sg
             </a>
           </span>
