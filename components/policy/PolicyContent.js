@@ -1,5 +1,4 @@
 import React from 'react'
-import Tag from './Tag'
 
 const PolicyContent = ({ policies }) => {
     return (
@@ -7,27 +6,37 @@ const PolicyContent = ({ policies }) => {
             {policies.map((p, i) => {
                 return (
                     <details key={i}>
-                        <summary className='cursor-pointer font-extrabold text-lg'>{Object.keys(p)}</summary>
-                        {p[Object.keys(p)].map((item, id) => {
+                        <summary className='list-none cursor-pointer font-extrabold text-lg pt-4'>{i + 1 + " . " + Object.keys(p)}</summary>
+                        {p[Object.keys(p)].map((item, idx) => {
                             {
                                 if (typeof item === 'string') {
-                                    return
-                                    (<p>{item}</p>)
+                                    return (
+                                        <div className='font-bold text-lg px-4 pt-2'>
+                                            <p key={idx}>{(i + 1) + "." + (idx + 1) + ". " + item}</p>
+                                        </div>
+                                    )
                                 } else {
                                     return (
-                                        <React.Fragment>
-                                            <details key={id} className='px-4'>
-                                                <summary className='flex cursor-pointer font-semibold text-lg'>
-                                                    {Object.keys(item)}
-
-                                                </summary>
-                                            </details>
+                                        <details key={idx} className='px-4 pt-2' open='true'>
+                                            <summary className='flex cursor-pointer font-bold text-lg'>
+                                                {(i + 1) + "." + (idx + 1) + ". " + Object.keys(item)}
+                                            </summary>
                                             {(item[Object.keys(item)]).map((item, id) => {
-                                                if (typeof item === 'string') { return item } else {
-                                                    return Object.keys(item)
+                                                if (typeof item === 'string') {
+                                                    return <li key={id} className="list-disc px-8">{item}</li>
+                                                } else {
+                                                    return (
+                                                        <React.Fragment>
+                                                            <details key={id} className='px-4'>
+                                                                <summary className='flex cursor-pointer font-semibold text-md'>
+                                                                    {Object.keys(item)}
+                                                                </summary>
+                                                            </details>
+                                                        </React.Fragment>
+                                                    )
                                                 }
                                             })}
-                                        </React.Fragment>
+                                        </details>
                                     )
                                 }
                             }
