@@ -10,12 +10,10 @@ const playstoreURL =
 
 const DownloadSection = () => {
   return (
-    <div className="md:flex justify-between items-center p-8">
-      <div>
+    <div className="md:flex justify-between items-center p-10 md:pt-20">
         <Image src={mobile} width={480} height={520} alt='HSC logo' />
-      </div>
-      <div className="grid grid-row-3">
-        <p className="font-bold text-xl text-center pt-6 md:text-3xl row-span-2">Track better with mobile app</p>
+      <div className="grid grid-row-3 md:pl-4">
+        <p className="font-bold text-xl text-center pt-6 md:text-2xl row-span-2">Track better with mobile app</p>
         <div className="flex justify-between items-center pt-8">
           <Link href={appstoreURL}>
             <a className="px-2">
