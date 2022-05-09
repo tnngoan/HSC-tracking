@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const Footer = () => {
   return (
-    <div className="text-center mt-32">
+    <div className="text-center mt-8 md:mt-32">
       <div className="flex-col md:flex-row md:justify-around py-7 border-t-2">
         <p className="text-blue-500">
           <a href="https://www.hupsooncheong.com.sg/">
@@ -16,10 +16,10 @@ const Footer = () => {
             <Link
               href="/privacy"
               className="text-blue-500"
-            >
-              Terms and policy
+            ><a>
+                Terms and policy</a>
             </Link>
-            |
+            <span> | </span>
             <a href="mailto:appsupport@hsc.sg" className="text-blue-500">
               appsupport@hsc.sg
             </a>
