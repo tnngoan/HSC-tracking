@@ -15,7 +15,9 @@
                                     ]
                                 ]
                             }
-                        ],
+                        ]
+                    },
+                    {
                         "Data collected by automated means": [
                             {
                                 "Various technologies may be used on our website and our mobile and web-based applications in order to make them more user-friendly, effective and secure. Such technologies may lead to data being collected automatically by us or by third parties on behalf of us. This data does not generally, but may, contain a user’s personal data. Examples of such technologies include:": [
@@ -135,7 +137,7 @@
     },
     {
         "Disclaimer": [
-            "TO THE MAXIMUM EXTENT PERMITTED BY LAW, WE SHALL NOT BE LIABLE IN ANY EVENT FOR ANY SPECIAL, EXEMPLARY, PUNITIVE, INDIRECT, INCIDENTAL OR CONSEQUENTIAL DAMAGES OF ANY KIND OR FOR ANY LOSS OF REPUTATION OR GOODWILL, WHETHER BASED IN CONTRACT, TORT (INCLUDING NEGLIGENCE), EQUITY, STRICT LIABILITY, STATUTE OR OTHERWISE, SUFFERED AS A RESULT OF UNAUTHORISED OR UNINTENDED USE, ACCESS OR DISCLOSURE OF YOUR PERSONAL DATA."
+            "To The Maximum Extent Permitted By Law, We Shall Not Be Liable In Any Event For Any Special, Exemplary, Punitive, Indirect, Incidental Or Consequential Damages Of Any Kind Or For Any Loss Of Reputation Or Goodwill, Whether Based In Contract, Tort (Including Negligence), Equity, Strict Liability, Statute Or Otherwise, Suffered As A Result Of Unauthorised Or Unintended Use, Access Or Disclosure Of Your Personal Data."
         ]
     },
     {
