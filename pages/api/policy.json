@@ -31,16 +31,24 @@
                                                     "information about the browser used (browser type and version, operating system, etc)."
                                                 ]
                                             }
-                                        ],
+                                        ]
+                                    },
+                                    {
                                         "Cookies": [
                                             "A number of places on our website and our mobile and web-based applications make use of cookies. These are essentially small text files that are stored on your computer’s hard drive or your user device by your web browser. We can use cookies to identify the owner of a user account and to store articles in a shopping basket during the purchasing process. In other words, cookies help to make our website or our (mobile and web-based) applications more user-friendly, more effective and more secure. The cookies usually used by us are so-called “session cookies”, which are automatically deleted at the end of the visit to the relevant website. By default, web browsers enable the use of cookies but this function can also be disabled. However, this will result in some services not being available. It is also possible to manually delete cookies after their use via the web browser. More information may be available from your web browser provider."
-                                        ],
+                                        ]
+                                    },
+                                    {
                                         "Flash cookies": [
                                             "A particular form of cookie is the flash cookie. In contrast to normal cookies, these cookies are not created and saved by the web browser but are governed by the Adobe Flash plug-in. These can contain more information than normal cookies and cannot be deleted or disabled via the browser; this is only possible if you follow instructions available from the Adobe Flash Player website. You can also obtain more information about these cookies on that website."
-                                        ],
+                                        ]
+                                    },
+                                    {
                                         "Web beacons and tracking links": [
                                             "Web beacons (also known as pixel tags and clear GIFs) involve graphics that are not apparent to the user. Tracking links and/or similar technologies consist of a few lines of programming code and can be embedded in our website or our (mobile) applications. In conjunction with cookies, these are primarily used for statistical analysis purposes. This technology can also be used for tracking traffic patterns on websites, as well as finding out if an e-mail has been received and opened and to see if there has been any response."
-                                        ],
+                                        ]
+                                    },
+                                    {
                                         "Web analytics": [
                                             "Web analytics is the term given to a method for collecting and assessing the behaviour of visitors to websites and (mobile) applications. This includes the analysis of traffic patterns in order, for example, to determine the frequency of visits to certain parts of a website or (mobile) application, or to find out what information and services our visitors are most interested in. For these purposes, we primarily make use of click-stream data and the other techniques listed above. Web analytics are carried out by Google Analytics and/or other selected parties. You can find out more information about the processing of web analytics data by Google Analytics in paragraph 7 below."
                                         ]
