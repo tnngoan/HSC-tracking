@@ -2,10 +2,11 @@ import React from 'react'
 import ContainerDetails from './ContainerDetails'
 import HomeButton from '../layout/HomeButton'
 
-const Details = () => {
+const Details = (details) => {
+    console.log("details as props", details)
     return (
         <div className='px-24'>
-            <ContainerDetails />
+            <ContainerDetails details={details} />
             <HomeButton />
         </div>
     )
