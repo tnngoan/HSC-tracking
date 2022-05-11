@@ -16,12 +16,12 @@ export const connectDB = async (type, value) => {
   let pool = await sql.connect(configPoolDummy);
   let returnObj = {};
   let inputType;
-  type === 'container' ? inputType = 'inputContainerNumber' : inputType = 'inputHBLNumber'
-  let res = await pool.request().input(inputType, value).execute('dbo.HSCGetStuffStsByCntrIDOrHBL').then((result, err) => {
+  // type === 'container' ? inputType = 'inputContainerNumber' : inputType = 'inputHBLNumber'
+  let res = await pool.request().input('inputContainerNumber', sql.VarChar, value).input('inputHBLNumber', sql.VarChar, '').execute('dbo.HSCGetStuffStsByCntrIDOrHBL').then((result, err) => {
     console.log(result)
     returnObj.result = result.recordsets
     returnObj.error = err
-    console.log(returnObj)
-  })
+    return returnObj
+  }).catch((err) => console.log(err))
   return res
 }
