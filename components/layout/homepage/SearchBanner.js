@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Logo from './Logo'
+import Logo from '../Logo'
 import { useRouter } from "next/router";
 
 const SearchBanner = () => {
