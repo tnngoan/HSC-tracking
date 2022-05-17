@@ -1,7 +1,7 @@
 ** Testing search function:
 
-- Insert a number contained 6 digits
-- Insert a string contained 17 digits
+- Container Number: 1234567
+- HBL Number: 4810-0706-202.018
 
 # Setting up MS SQL
 Enable TCP connections with MS SQL (google how)
