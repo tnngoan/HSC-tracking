@@ -1,13 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
 import logo from "../../assets/images/logo.png";
+import ModalDropdown from "./ModalDropdown";
+import useModal from "./useModal";
 const navData = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
-  { name: "Service", href: "#" },
+  { name: "Service", href: "/#" },
   { name: "Contact", href: "/contact" },
 ];
 const Header = () => {
+
+  const { isOpening, toggle } = useModal()
+
   return (
     <header className="sticky top-0 z-50 flex py-3 border-b-2 shadow-md bg-white justify-between md:justify-around items-center">
       <div className="relative justify-center pl-2 pt-2">
@@ -23,7 +28,7 @@ const Header = () => {
         })}
       </nav>
       <div className="md:hidden">
-        <button>
+        <button className="button-default" onClick={toggle}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-10 w-10"
@@ -39,6 +44,7 @@ const Header = () => {
             />
           </svg>
         </button>
+        <ModalDropdown isOpening={isOpening} hide={toggle} />
       </div>
     </header>
   );
