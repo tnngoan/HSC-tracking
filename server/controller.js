@@ -14,12 +14,13 @@ export const insertSubcriber = async () => {
 
 export const connectDB = async (type, value) => {
   let pool = await sql.connect(configPoolDummy);
+  console.log("connecting to db...")
   let returnObj = {};
   let inputType;
   // type === 'container' ? inputType = 'inputContainerNumber' : inputType = 'inputHBLNumber'
   let res = await pool.request().input('inputContainerNumber', sql.VarChar, value).input('inputHBLNumber', sql.VarChar, '').execute('dbo.HSCGetStuffStsByCntrIDOrHBL').then((result, err) => {
     console.log(result)
-    returnObj.result = result.recordsets
+    returnObj.data = details
     returnObj.error = err
     return returnObj
   }).catch((err) => console.log(err))

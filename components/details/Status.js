@@ -1,6 +1,7 @@
 import React from 'react'
 
 const Status = ({ details }) => {
+    console.log(details)
     return (
         <form className="rounded p-4 my-4 border border-green-999 width-auto grid grid-row-2 text-center font-semibold">
             <div className='flex justify-between'>

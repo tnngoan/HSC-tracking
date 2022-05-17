@@ -17,14 +17,14 @@ const Details = () => {
       }
       if (type && value) {
         setChecking(true);
-        const configHeaders = {
-          "Content-Type": "application/json",
+        const params = {
+          type, value
         };
-        const res = await axios.get("/api/details", configHeaders);
+        const res = await axios.get("/api/details", params);
         if (res.status !== 200) {
           router.push({ pathname: "/error" });
         } else {
-          const result = res.data;
+          const result = res.data.args;
           setDetails(result)
           type === 'container' ? searchByContainerNumber.setDetails(result) : searchByHblNumber.setDetails(result)
         }
