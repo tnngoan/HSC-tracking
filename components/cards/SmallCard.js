@@ -12,7 +12,7 @@ const SmallCard = ({ card }) => {
         <p className="text-xl font-medium">{card.title}</p>
         <p className="text-sm">{card.description}</p>
       </div>
-      <button className="hover:animate-shake-button rounded-lg border border-2 border-green-800 uppercase font-extrabold text-green-999 mt-3 py-3 hover:text-white hover:bg-green-800 hover:border-green-800">
+      <button className="rounded-lg border border-2 border-green-800 uppercase font-extrabold text-green-999 mt-3 py-3 hover:text-white hover:bg-green-800 hover:border-green-800">
         {card.button}
       </button>
     </div>
