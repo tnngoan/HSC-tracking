@@ -15,13 +15,11 @@ const SearchBanner = () => {
       return;
     }
     if (searchNum.length === containerNumLength) {
-      console.log("input is container number", searchNum);
       router.push({
         pathname: "/details",
         query: { type: "container", value: searchNum },
       });
     } else {
-      console.log("input is hbl number", searchNum);
       router.push({
         pathname: "/details",
         query: { type: "hbl", value: searchNum },
