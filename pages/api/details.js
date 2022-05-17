@@ -2,11 +2,16 @@ import { connectDB } from '../../server/controller'
 
 const handler = async (req, res) => {
   if (req.method === "GET") {
-    const returnObj = await connectDB("container", req.body.value);
+    console.log("type and value: ", req.body.type, req.body.value)
+    const returnObj = await connectDB(req.body.type, req.body.value);
     if (!!returnObj) {
-      res.status(500).json(returnObj || "No result found!")
+      res.status(500).json("No result found!")
     } else {
-      res.status(200).json(returnObj || "Here's what I found:")
+      res.status(200).json({
+        message: "Connect successfully", data: {
+          type: req.body.type, value: req.body.value
+        }
+      })
     }
   } else {
     return res.status(405).end()
