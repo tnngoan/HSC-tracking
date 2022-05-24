@@ -7,7 +7,7 @@ const Contact = () => {
     return (
         <div>
             <Header />
-            <div className='p-8 md:px-40 lg:px-80 flex-cols text-center bg-green-900 min-h-screen items-center'>
+            <div className='p-8 md:px-40 lg:px-80 flex-cols text-center min-h-screen bg-green-900 items-center pb-28'>
                 <h1 className='font-bold text-3xl text-white py-12'>GET IN TOUCH</h1>
                 <div className='border border-2 border-green-900 p-8 bg-white my-2'>
                     <div className='flex justify-around items-center'>
@@ -16,13 +16,13 @@ const Contact = () => {
                     <form className='py-6'>
                         <div className='flex items-top justify-center py-2'>
                             <label><FontAwesomeIcon icon={faAt} size="2x" className='text-green-900 px-2' /></label>
-                            <input placeholder='email' className='border border-2 rounded border-green-999 px-2 py-1 w-full md:py-2 text-gray-600' />
+                            <input placeholder='Email' className='border border-2 rounded border-green-999 px-2 py-1 w-full md:py-2 text-gray-600' />
                         </div>
                         <div className='flex items-top justify-center py-2'>
                             <label><FontAwesomeIcon icon={faMessage} size="2x" className='text-green-900 px-2' /></label>
                             <textarea placeholder='Leave us a message' className='rounded border border-2 border-green-999 p-3 w-full  text-gray-600' />
                         </div>
-                        <button className='bg-green-900 text-white w-full md:w-3/4 py-3 rounded-md mt-4'>submit</button>
+                        <button type="submit" className='bg-green-900 text-white w-full md:w-3/4 py-3 rounded-md mt-4'>Submit</button>
                     </form>
                 </div>
                 <div className=''>
