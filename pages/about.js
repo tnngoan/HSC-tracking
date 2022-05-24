@@ -6,6 +6,7 @@ import trucking from '../assets/images/truck.jpg'
 import moretrucking from '../assets/images/trucks.jpg'
 import containerstation from '../assets/images/moretrucking.jpg'
 import staffs from '../assets/images/staffs.jpg'
+
 export default function about() {
     return (
         <div>
