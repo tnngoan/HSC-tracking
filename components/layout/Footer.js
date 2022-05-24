@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const Footer = () => {
   return (
-    <div className="text-center mt-32">
+    <div className="text-center">
       <div className="flex-col md:flex-row md:justify-around py-7 border-t-2">
         <p className="text-blue-500">
           <a href="https://www.hupsooncheong.com.sg/">
