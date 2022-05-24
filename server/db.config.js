@@ -20,4 +20,4 @@ export const configPool2012 = {
   },
 };
 
-export const configPoolDummy = "Server=localhost;PORT=1433;Database=HSC2012;Integrated Security=true;User Id=MyUser;Password=pass@123;TrustServerCertificate=True"
+export const configPoolDummy = process.env.LOCAL_SERVER
