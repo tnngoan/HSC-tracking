@@ -20,4 +20,4 @@ export const configPool2012 = {
   },
 };
 
-export const configPoolDummy = process.env.LOCAL_SERVER
+export const configLocal = process.env.LOCAL_SERVER
