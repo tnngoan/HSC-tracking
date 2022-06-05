@@ -29,6 +29,6 @@ export const connectLocal = async (container, hbl) => {
 export const insertLocal = async (email) => {
   let pool = await sql.connect(configLocal);
   let returnMessage = ''
-  let res = await pool.request().input('email')
+  let res = await pool.request().input('email').execute('dbo.')
 }
 

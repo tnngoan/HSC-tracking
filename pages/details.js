@@ -19,16 +19,16 @@ const Details = () => {
       if (type && value) {
         setChecking(true);
         const config = {
-          timeout: 120000,
           headers: {
-            load: jwt.sign(type === 'container' ? { type: "container", ContainerNo: value } : { type: "hbl", HBLNo: value }, process.env.NEXT_PUBLIC_jwt_256bit_secret)
-          }
+            load: jwt.sign({ type: value }, process.env.NEXT_PUBLIC_jwt_256bit_secret)
+          },
+          timeout: 120000
         };
         const res = await axios.get("/api/details", config);
-        if (res.status !== 200) {
+        console.log("checked")
+        if (error) {
           router.push({ pathname: "/error" });
-        } else {
-          console.log(res)
+        } else if (res) {
           const result = res.data.args;
           setDetails(result)
           type === 'container' ? searchByContainerNumber.setDetails(result) : searchByHblNumber.setDetails(result)
