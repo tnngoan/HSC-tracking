@@ -13,22 +13,21 @@ export const insertSubcriber = async () => {
 
 };
 
-export const connectLocal = async (container, hbl) => {
+export const connectLocal = async (containerNumber, hbl) => { // todo: fix name
   let pool = await sql.connect(configLocal);
   let returnObj = {};
-  let res = await pool.request().input('inputContainerNumber', sql.VarChar, container || " ").input('inputHBLNumber', sql.VarChar, hbl || " ")
+  return pool.request().input('inputContainerNumber', sql.VarChar, containerNumber || " ")//.input('inputHBLNumber', sql.VarChar, hbl || " ")
   .execute('dbo.HSCGetStuffStsByCntrIDOrHBL').then((result, err) => {
     console.log("result", result)
-    returnObj.data = details
+    returnObj.data = result.recordset
     returnObj.error = err
     return returnObj
   }).catch((err) => console.log(err))
-  return res
 }
 
 export const insertLocal = async (email) => {
   let pool = await sql.connect(configLocal);
   let returnMessage = ''
-  let res = await pool.request().input('email').execute('dbo.')
+  let res = await pool.request().input('email').execute('dbo.') // this is missing something
 }
 

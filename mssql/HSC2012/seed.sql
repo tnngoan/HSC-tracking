@@ -1,10 +1,20 @@
 USE [HSC2012]
 GO
 
+DELETE FROM [dbo].[VesselInfo]
+DELETE FROM [dbo].[JobInfo]
+DELETE FROM [dbo].[ContainerInfo]
+DELETE FROM [dbo].[Place of Delivery]
+
+INSERT INTO [dbo].[Place of Delivery]
+    ([DeliveryID])
+VALUES
+    ('hsc')
+
 INSERT INTO [dbo].[VesselInfo]
     ([VesselName],[InVoy],[OutVoy],[ETA],[COD],[Berth],[ETD],[ServiceRoute],[VesselFullName],[ShippingLine])
 VALUES
-    ('seedVessel', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'seedingFirstVessel', NULL)
+    ('seedVessel', NULL, NULL, 2050, NULL, NULL, NULL, NULL, 'seedingFirstVessel', NULL)
 GO
 
 INSERT INTO [dbo].[JobInfo]
@@ -12,11 +22,11 @@ INSERT INTO [dbo].[JobInfo]
     [TruckTo],[DateJobRaised],[TranshipmentRef],[Consignee],[Enclosure],[PersonHold],[DatePend],[DateSend],[Remarks],[BillingParty],
     [CreatedBy],[ModifiedBy],[CreatedDt],[ModifiedDt],[JobType],[InvRevise],[InvCash],[CntrRequiredDate],[CntrStuffingDate])
 VALUES
-    (0, NULL, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL,
-        NULL, '4/17/2022 23:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    (0, NULL, NULL, 0, NULL, NULL, 132004, NULL, NULL, 'Import',
+        'hsc', '4/17/2022 23:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
         NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-    (1, NULL, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL,
-        NULL, '4/18/2022 23:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    (1, NULL, NULL, 0, NULL, NULL, 132004, NULL, NULL, 'Import',
+        'hsc', '4/18/2022 23:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
         NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
 
@@ -28,12 +38,12 @@ INSERT INTO [dbo].[ContainerInfo]
     [DamageAmtAbsorb],[Bay],[Stevedore],[SevenPoints],[StartTime],[EndTime],[IsOK],[Agent],[ShutOut],[NTUnstuffingStatus],[ReExport],
     [J5Seal],[TallySheetDateSend])
 VALUES
-    (1, 'CAAU', 1234567, NULL, NULL, NULL, 0, 0, NULL, NULL, NULL,
+    (1, 'CAAU', '1234567', NULL, NULL, NULL, 0, 0, NULL, NULL, NULL,
         NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, NULL,
         NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL,
         NULL, NULL, 0, NULL, NULL , NULL , NULL , NULL , NULL , NULL , NULL ,
         NULL , NULL , NULL , NULL , NULL , NULL , NULL , NULL , NULL , NULL , NULL , NULL ),
-    (1, 'CAAU', 0123456, NULL, NULL, NULL, 0, 0, NULL, NULL, NULL,
+    (1, 'CAAU', '0123456', NULL, NULL, NULL, 0, 0, NULL, NULL, NULL,
         NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, NULL,
         NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL,
         NULL, NULL, 0, NULL, NULL , NULL , NULL , NULL , NULL , NULL , NULL ,

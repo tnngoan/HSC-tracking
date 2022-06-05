@@ -18,14 +18,12 @@ const Details = () => {
       }
       if (type && value) {
         setChecking(true);
-        const config = {
-          headers: {
-            load: jwt.sign({ type: value }, process.env.NEXT_PUBLIC_jwt_256bit_secret)
-          },
-          timeout: 120000
-        };
-        const res = await axios.get("/api/details", config);
-        console.log("checked")
+        const params = {
+          containerNumber: "1234567",
+          HBLNo: "kittenHBLNo"
+        }
+        console.log(new URLSearchParams(params).toString())
+        const res = await axios.get(`/api/details?${new URLSearchParams(params).toString()}`);
         if (error) {
           router.push({ pathname: "/error" });
         } else if (res) {
