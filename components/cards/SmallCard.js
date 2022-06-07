@@ -3,9 +3,9 @@ import Image from "next/image";
 
 const SmallCard = ({ card }) => {
   return (
-    <div className="bg-white rounded-md grid grid-row-3 justify-around align-center transform transition duration-300 ease-out">
+    <div className="bg-white grid grid-row-3 justify-around align-center transform transition duration-300 ease-out">
       <div className="flex justify-center object-cover">
-        <Image className="rounded-md" src={card.img} width={400} height={250} alt="HSC logo" />
+        <Image src={card.img} width={400} height={250} alt="HSC logo" />
       </div>
       <div className="flex flex-col text-gray-700 py-8 px-16">
         <p className="text-2xl font-medium">{card.title}</p>
