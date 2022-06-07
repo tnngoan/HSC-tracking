@@ -1,9 +1,9 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import mobile from "../../assets/images/mobileApp-photo.png";
-import appstore from "../../assets/images/appstore.png";
-import playstore from "../../assets/images/playstore.png";
+import mobile from "../../public/images/mobileApp-photo.png";
+import appstore from "../../public/images/appstore.png";
+import playstore from "../../public/images/playstore.png";
 const appstoreURL = "https://apps.apple.com/ph/app/hup-soon-cheong/id993107830";
 const playstoreURL =
   "https://play.google.com/store/apps/details?id=com.hupsooncheong.mobileapp";

@@ -1,11 +1,11 @@
 import React from 'react'
 import { Header, Footer } from '../components/layout'
 import Image from "next/image"
-import incorporated from '../assets/images/incorporate.jpg'
-import trucking from '../assets/images/truck.jpg'
-import moretrucking from '../assets/images/trucks.jpg'
-import containerstation from '../assets/images/moretrucking.jpg'
-import staffs from '../assets/images/staffs.jpg'
+import incorporated from '../public/images/incorporate.jpg'
+import trucking from '../public/images/truck.jpg'
+import moretrucking from '../public/images/trucks.jpg'
+import containerstation from '../public/images/moretrucking.jpg'
+import staffs from '../public/images/staffs.jpg'
 
 export default function about() {
     return (
