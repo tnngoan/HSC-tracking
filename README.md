@@ -1,7 +1,4 @@
-** Testing search function:
-
-- Container Number: 1234567
-- HBL Number: 4810-0706-202.018
+## Currently available for testing in local server only
 
 # Setting up MS SQL
 Enable TCP connections with MS SQL (google how)
