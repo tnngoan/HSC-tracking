@@ -7,7 +7,7 @@ function Home() {
       <Head>
         <title>Hup Soon Cheong</title>
         <meta name="description" content="Hup Soon Cheong Service Ltd" />
-        <link rel="icon" href="../../assets/images/logo.png" />
+        <link rel="icon" href="../../public/images/logo.png" />
       </Head>
       <Header />
       <Main />

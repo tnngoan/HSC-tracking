@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 const SearchBanner = () => {
   const [keyword, setKeyword] = useState("");
   const router = useRouter();
-
   const submitHandler = (e) => {
     e.preventDefault();
     const searchNum = keyword.trim();
@@ -35,7 +34,7 @@ const SearchBanner = () => {
         onSubmit={submitHandler}
       >
         <input
-          className="text-green-999 py-3 px-4 border border-2 rounded-md focus-green-999"
+          className="text-green-999 py-3 px-4 border border-1 rounded-md focus-green-999"
           type="text"
           minLength="7"
           maxLength="17"
@@ -43,7 +42,7 @@ const SearchBanner = () => {
           onChange={(e) => setKeyword(e.target.value)}
         />
         <button
-          className="px-4 py-3 bg-green-999 rounded-md ml-2 text-white border border-2 border-green-999"
+          className="px-4 py-3 bg-green-999 rounded-md ml-2 text-white border border-1 border-green-999"
           type="submit"
         >
           <svg
