@@ -19,15 +19,15 @@ const Details = () => {
       if (type && value) {
         setChecking(true);
         const params = {
-          containerNumber: "1234567",
-          HBLNo: "kittenHBLNo"
+          containerNumber: value
         }
         console.log(new URLSearchParams(params).toString())
         const res = await axios.get(`/api/details?${new URLSearchParams(params).toString()}`);
-        if (error) {
+        if (res.status !== 200) {
           router.push({ pathname: "/error" });
-        } else if (res) {
-          const result = res.data.args;
+        } else {
+          console.log(res)
+          const result = res;
           setDetails(result)
           type === 'container' ? searchByContainerNumber.setDetails(result) : searchByHblNumber.setDetails(result)
         }

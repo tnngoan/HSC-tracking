@@ -1,5 +1,4 @@
 import React, { useState, useRef } from 'react'
-import Contact from '../../pages/contact'
 
 const FormInput = () => {
     const [email, setEmail] = useState("")

@@ -13,21 +13,25 @@ export const insertSubcriber = async () => {
 
 };
 
-export const connectLocal = async (containerNumber, hbl) => { // todo: fix name
+export const connectLocal = async (containerNumber, hblNumber) => { // todo: fix name
   let pool = await sql.connect(configLocal);
   let returnObj = {};
-  return pool.request().input('inputContainerNumber', sql.VarChar, containerNumber || " ")//.input('inputHBLNumber', sql.VarChar, hbl || " ")
-  .execute('dbo.HSCGetStuffStsByCntrIDOrHBL').then((result, err) => {
-    console.log("result", result)
-    returnObj.data = result.recordset
-    returnObj.error = err
-    return returnObj
-  }).catch((err) => console.log(err))
+  return pool.request().input('inputContainerNumber', sql.VarChar, containerNumber || " ").execute('dbo.HSCGetStuffStsByCntrIDOrHBL')
+    .then((result, err) => {
+      console.log("result", result)
+      returnObj.data = result.recordset
+      returnObj.error = err
+      return returnObj
+    }).catch((err) => console.log(err))
 }
 
 export const insertLocal = async (email) => {
   let pool = await sql.connect(configLocal);
   let returnMessage = ''
-  let res = await pool.request().input('email').execute('dbo.') // this is missing something
+  let res = await pool.request().input('email').execute('dbo.').then((res, err) => {
+    return res.json()
+  }).catch((err) => {
+    console.log(err)
+  }) // this is missing something
 }
 
