@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { searchByContainerNumber, searchByHblNumber } from '../store'
 import { Spinner } from "../components/layout";
 import DetailsPage from "../components/details/DetailsPage";
+import jwt from 'jsonwebtoken';
 import axios from "axios";
 
 const Details = () => {
@@ -13,18 +14,20 @@ const Details = () => {
     const { type, value } = { ...router.query };
     const checkDetails = async () => {
       if (!type || !value) {
-        return;
+        return
       }
       if (type && value) {
         setChecking(true);
         const params = {
-          type, value
-        };
-        const res = await axios.get("/api/details", params);
+          containerNumber: value
+        }
+        console.log(new URLSearchParams(params).toString())
+        const res = await axios.get(`/api/details?${new URLSearchParams(params).toString()}`);
         if (res.status !== 200) {
           router.push({ pathname: "/error" });
         } else {
-          const result = res.data.args;
+          console.log(res)
+          const result = res;
           setDetails(result)
           type === 'container' ? searchByContainerNumber.setDetails(result) : searchByHblNumber.setDetails(result)
         }
