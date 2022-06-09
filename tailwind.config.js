@@ -7,7 +7,7 @@ module.exports = {
     extend: {
       colors: {
         green: {
-          999: "#072801",
+          999: "#072801"
         },
       },
       keyframes: {

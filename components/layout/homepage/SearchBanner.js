@@ -27,14 +27,14 @@ const SearchBanner = () => {
     }
   };
   return (
-    <div className="grid grid-row-2 md:my-0 my-8 justify-center row-auto h-[450px] sm:h-[400px] lg:h-[500px] xl:h-[540px] 2xl:h-[700px]">
+    <div className="grid grid-row-2 my-8 md:my-16 justify-center row-auto h-[450px] sm:h-[480px] md:h-[600px] lg:h-[480px] xl:h-[540px] 2xl:h-[620px]">
       <Logo />
       <form
         className="flex justify-center items-center"
         onSubmit={submitHandler}
       >
         <input
-          className="text-green-999 py-3 px-4 border border-1 rounded-md focus-green-999"
+          className="text-green-999 py-3 px-4 border border-1 rounded-md focus-green-999 md:w-full"
           type="text"
           minLength="7"
           maxLength="17"

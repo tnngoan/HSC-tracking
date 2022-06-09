@@ -10,7 +10,7 @@ const Logo = () => {
                     <Image src={logo} width={440} height={231.4} alt="HSC logo" />
                 </div>
             </div>
-            <div className="flex items-center justify-center">
+            <div className="flex items-center justify-center md:py-8">
                 <p className="text-2xl md:text-4xl text-center px-5 font-semibold">
                     Hup Soon Cheong Services
                 </p>
