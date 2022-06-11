@@ -11,7 +11,7 @@ const Logo = () => {
                 </div>
             </div>
             <div className="flex items-center justify-center md:py-8">
-                <p className="text-2xl md:text-4xl text-center px-5 font-semibold">
+                <p className="text-2xl md:text-4xl text-center px-5 font-semibold text-green-999 opacity-80">
                     Hup Soon Cheong Services
                 </p>
             </div>
