@@ -1,45 +1,57 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelopeOpen, faLocationDot, faPhone, faMessage, faAt } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelopeOpen, faLocationDot, faPhone } from '@fortawesome/free-solid-svg-icons'
 import { Header, Footer } from '../components/layout'
+import Logo from '../components/layout/Logo';
 
 const Contact = () => {
     return (
         <div>
             <Header />
-            <div className='p-8 md:px-40 lg:px-80 flex-cols text-center min-h-screen items-center pb-28'>
-                <h1 className='font-bold text-3xl text-green-999 py-12 md:py-3 md:pt-3'>GET IN TOUCH</h1>
-                <div className='border border-1 border-green-900 p-8 bg-white my-2'>
-                    <div className='flex justify-around items-center'>
-                        <FontAwesomeIcon icon={faEnvelopeOpen} size="3x" className='text-green-900' />
+                <div className='flex justify-center items-center h-4/6'>
+                    <div className='flex items-center opacity-90 w-2/5'>
+                        <Logo />
                     </div>
-                    <form className='py-6 md:pb-3'>
-                        <div className='flex items-top justify-center py-2'>
-                            <label><FontAwesomeIcon icon={faAt} size="2x" className='text-green-900 px-2' /></label>
-                            <input placeholder='Email' className='border border-1 rounded border-green-999 px-2 py-1 w-full md:py-2 text-gray-600' />
+                    <div className='flex-cols text-justify items-center w-2/5 bg-gray-200 rounded-md border p-6 px-20 my-8 text-gray-600'>
+                        <div className='border-green-900 my-2'>
+                            <div className='flex justify-center items-baseline'>
+                                <FontAwesomeIcon icon={faEnvelopeOpen} size="2x" className='text-green-900 opacity-80 pr-4' />
+                                <h1 className='font-bold text-3xl text-green-900 opacity-80 text-center'>Contact form</h1>
+                            </div>
+                            <form className='py-6 md:pb-3'>
+                                <label>
+                                    <p>Name:*</p>
+                                    <input placeholder='Name' className='border border-1 focus:ring outline-none rounded px-4 py-2 w-full my-2 text-gray-600' />
+                                </label>
+                                <label>
+                                    <p>Email:*</p>
+                                </label>
+                                <input placeholder='Email' className='border border-1 focus:ring outline-none rounded px-4 py-2 w-full my-2 text-gray-600' />
+                                <label>
+                                    <p>Message:*</p>
+                                </label>
+                                <textarea rows="7" cols="33" placeholder='Leave us a message' className='focus:ring outline-none rounded border border-1 p-3 px-4 py-2 my-2 w-full text-gray-600' />
+                                <div className='flex justify-around items-center'>
+                                    <button type="submit" className='bg-green-800 text-white w-full md:w-1/4 py-3 hover:opactity-100 hover:outline focus:ring active:bg-green-900 rounded-md mt-4'>Submit</button>
+                                </div>
+                            </form>
                         </div>
-                        <div className='flex items-top justify-center py-2'>
-                            <label><FontAwesomeIcon icon={faMessage} size="2x" className='text-green-900 px-2' /></label>
-                            <textarea placeholder='Leave us a message' className='rounded border border-1 border-green-999 p-3 w-full  text-gray-600' />
+                        <div className='my-4 text-center'>
+                            <div className='border-green-900 p-6 bg-white rounded'>
+                                <FontAwesomeIcon icon={faLocationDot} size="3x" className='text-green-900 opacity-80' />
+                                <p className="font-semibold items-center pt-6 py-2 text-gray-700 hover:text-green-800 hover:underline-offset-1">
+                                    <a href="https://goo.gl/maps/GYS8pEqXufLxKGbo9">Block 513 Kampong Bahru Road <br /> #02-109 Keppel Distripark Singapore, 099449 </a>
+                                </p>
+                            </div>
+                            <div className='border-green-900 p-6 bg-white my-2 rounded'>
+                                <FontAwesomeIcon icon={faPhone} size="3x" className='text-green-900 opacity-80' />
+                                <p className="font-semibold items-center pt-6 py-2">
+                                    +65-66726111
+                                </p>
+                            </div>
                         </div>
-                        <button type="submit" className='bg-green-900 text-white w-full md:w-1/4 py-3 rounded-md mt-4 md:mt-8'>Submit</button>
-                    </form>
-                </div>
-                <div className='my-4'>
-                    <div className='border border-1 border-green-900 p-8 bg-white'>
-                        <FontAwesomeIcon icon={faLocationDot} size="3x" className='text-green-900' />
-                        <p className="font-semibold items-center pt-6 py-2">
-                            Block 513 Kampong Bahru Road <br /> #02-109 Keppel Distripark Singapore, 099449
-                        </p>
-                    </div>
-                    <div className='border border-1 border-green-900 p-8 bg-white my-2'>
-                        <FontAwesomeIcon icon={faPhone} size="3x" className='text-green-900' />
-                        <p className="font-semibold items-center pt-6 py-2">
-                            +65-66726111
-                        </p>
                     </div>
                 </div>
-            </div>
             <Footer />
         </div>
     )
