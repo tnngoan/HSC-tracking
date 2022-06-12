@@ -3,17 +3,19 @@ import Image from "next/image";
 
 const SmallCard = ({ card }) => {
   return (
-    <div className="bg-white grid grid-row-3 justify-around align-center transform transition duration-300 ease-out">
+    <div className="bg-white grid grid-row-3 justify-around align-center transform transition duration-300 ease-out py-6 md:py-0">
       <div className="flex justify-center object-cover">
         <Image src={card.img} width={400} height={250} alt="HSC logo" />
       </div>
-      <div className="flex flex-col text-gray-700 py-8 px-16">
+      <div className="flex flex-col text-gray-700 py-8 px-8 md:px-12">
         <p className="text-2xl font-medium">{card.title}</p>
         <p className="text-sm text-gray-500">{card.description}</p>
       </div>
-      <button className="rounded-lg text-xl uppercase font-extrabold opacity-60 hover:opacity-90 text-green-999">
-        {card.button}
-      </button>
+      <div className="flex justify-center items-center">
+        <button className="rounded-lg border border-1 border-green-900 w-1/2 p-2 focus:ring focus:bg-green-800 focus:opacity-80 focus:text-gray-200 text-xl uppercase font-extrabold opacity-60 hover:opacity-90 text-green-999">
+          {card.button}
+        </button>
+      </div>
     </div>
   );
 };
