@@ -8,11 +8,11 @@ const Contact = () => {
     return (
         <div>
             <Header />
-                <div className='flex justify-center items-center h-4/6'>
-                    <div className='flex items-center opacity-90 w-2/5'>
+                <div className='md:flex md:justify-center items-center h-4/6'>
+                    <div className='flex items-center opacity-90 md:w-2/5 py-20 md:py-0'>
                         <Logo />
                     </div>
-                    <div className='flex-cols text-justify items-center w-2/5 bg-gray-200 rounded-md border p-6 px-20 my-8 text-gray-600'>
+                    <div className='flex-cols text-justify items-center md:w-2/5 bg-gray-200 rounded-md border p-6 px-2 md:px-20 my-8 text-gray-600'>
                         <div className='border-green-900 my-2'>
                             <div className='flex justify-center items-baseline'>
                                 <FontAwesomeIcon icon={faEnvelopeOpen} size="2x" className='text-green-900 opacity-80 pr-4' />
