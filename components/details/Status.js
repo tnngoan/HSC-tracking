@@ -2,7 +2,6 @@ import React from 'react'
 import moment from 'moment'
 
 const Status = ({ data }) => {
-    console.log("data at status as props", data)
     return (
         <form className="rounded p-4 my-4 border border-green-999 width-auto grid grid-row-2 text-center font-semibold">
             <div className='flex justify-between'>

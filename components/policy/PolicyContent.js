@@ -45,7 +45,6 @@ const PolicyContent = ({ policies }) => {
                                                                                 return <div className='px-8 text-sm'>
                                                                                     {(Object.keys(miniContent)).map((key, id) => {
                                                                                         if (key.length === 1) {
-                                                                                            console.log(key)
                                                                                             return <li>{miniContent[key]}</li>
                                                                                         } else {
                                                                                             return <li>{key}</li>

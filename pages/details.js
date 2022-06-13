@@ -25,7 +25,6 @@ const Details = () => {
           router.push({ pathname: "/error" });
         } else {
           const result = res.data.data[0];
-          console.log("response: ", result)
           type === 'container' ? searchByContainerNumber.setDetails(result) : searchByHblNumber.setDetails(result)
         }
         setChecking(false);
