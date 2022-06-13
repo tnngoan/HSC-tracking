@@ -11,6 +11,9 @@ const SearchBanner = () => {
     const searchNum = keyword.trim();
     const containerNumLength = 7;
     const maxLength = 17;
+    if(searchNum.length === 0){
+      return;
+    }
     if (searchNum.length > maxLength) {
       return;
     }
@@ -34,15 +37,15 @@ const SearchBanner = () => {
         onSubmit={submitHandler}
       >
         <input
-          className="text-green-999 py-3 px-4 border border-1 rounded-md focus-green-999 md:w-full"
+          className="text-green-999 py-3 px-4 rounded-md focus-green-999 md:w-full focus:ring"
           type="text"
           minLength="7"
           maxLength="17"
-          placeholder="Container or HBL number"
+          placeholder="Container or HBL"
           onChange={(e) => setKeyword(e.target.value)}
         />
         <button
-          className="px-4 py-3 bg-green-999 rounded-md ml-2 text-white border border-1 border-green-999"
+          className="px-4 py-3 bg-green-999 rounded-md ml-2 text-white border border-1 border-green-999 opacity-80 focus:ring focus:offset focus:bg-green-800"
           type="submit"
         >
           <svg

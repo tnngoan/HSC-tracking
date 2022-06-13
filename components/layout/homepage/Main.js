@@ -10,7 +10,7 @@ const wideCards = cards.wide_cards;
 
 const Main = () => {
   return (
-    <div className="lg:px-40">
+    <div className="lg:px-64">
       <SearchBanner />
       <Banner />
       <WideCard card={wideCards[0]} order="order-last" />
