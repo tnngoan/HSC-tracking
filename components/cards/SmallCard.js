@@ -12,7 +12,7 @@ const SmallCard = ({ card }) => {
         <p className="text-sm text-gray-500">{card.description}</p>
       </div>
       <div className="flex justify-center items-center">
-        <button className="rounded-lg border border-1 border-green-900 w-1/2 p-2 focus:ring bg-green-800 text-gray-200 text-lg uppercase font-extrabold hover:opacity-100 opacity-90 lg:text-green-999">
+        <button className="rounded-lg border border-1 border-green-900 w-1/2 p-2 focus:ring bg-green-800 text-gray-200 text-lg uppercase font-bold focus:opacity-80">
           {card.button}
         </button>
       </div>
