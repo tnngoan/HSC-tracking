@@ -12,7 +12,7 @@ GO
 INSERT INTO [dbo].[VesselInfo]
     ([VesselName],[InVoy],[OutVoy],[ETA],[COD],[Berth],[ETD],[ServiceRoute],[VesselFullName],[ShippingLine])
 VALUES
-    ('seedVessel', NULL, NULL,'2023-08-13 00:00:00.000', NULL, NULL, NULL, NULL, 'seedingFirstVessel', NULL)
+    ('seedVessel', NULL, NULL,'2023-08-13 16:30:00.000', NULL, NULL, NULL, NULL, 'seedingFirstVessel', NULL)
 GO
 
 INSERT INTO [dbo].[JobInfo]

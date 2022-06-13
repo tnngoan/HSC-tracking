@@ -13,7 +13,7 @@ export const insertSubcriber = async () => {
 
 };
 
-export const connectLocal = async (containerNumber, hblNumber) => { // todo: fix name
+export const connectLocal = async (containerNumber) => { // todo: fix name
   let pool = await sql.connect(configLocal);
   let returnObj = {};
   return pool.request().input('inputContainerNumber', sql.VarChar, containerNumber || " ").execute('dbo.HSCGetStuffStsByCntrIDOrHBL')
