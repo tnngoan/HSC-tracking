@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { searchByContainerNumber, searchByHblNumber } from '../store'
-import { Spinner } from "../components/layout";
-import DetailsPage from "../components/details/DetailsPage";
-import jwt from 'jsonwebtoken';
+// import { Spinner } from "../components/layout";
+import ContainerDetails from "../components/details/ContainerDetails";
 import axios from "axios";
 
 const Details = () => {
   const router = useRouter();
   const [checking, setChecking] = useState(true);
-  const [details, setDetails] = useState({})
   useEffect(() => {
     const { type, value } = { ...router.query };
     const checkDetails = async () => {
@@ -26,9 +24,8 @@ const Details = () => {
         if (res.status !== 200) {
           router.push({ pathname: "/error" });
         } else {
-          console.log(res)
-          const result = res;
-          setDetails(result)
+          const result = res.data.data[0];
+          console.log("response: ", result)
           type === 'container' ? searchByContainerNumber.setDetails(result) : searchByHblNumber.setDetails(result)
         }
         setChecking(false);
@@ -38,7 +35,7 @@ const Details = () => {
   }, [router]);
   return (
     <>
-      {checking ? <Spinner /> : <DetailsPage details={details} />}
+      {router.query.type === 'container' ? <ContainerDetails /> : null}
     </>
   );
 };

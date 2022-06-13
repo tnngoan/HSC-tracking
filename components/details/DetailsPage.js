@@ -5,7 +5,6 @@ import HomeButton from '../layout/HomeButton'
 const Details = (details) => {
     return (
         <div className='px-24'>
-            <ContainerDetails details={details} />
             <HomeButton />
         </div>
     )
