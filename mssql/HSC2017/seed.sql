@@ -46,7 +46,87 @@ VALUES
     (0
            , NULL
            , NULL
+           , 'SUBA05587'
            , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , 0),
+    (0
+           , NULL
+           , NULL
+           , 'SUBA05626'
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , NULL
+           , 0),
+    (0
+           , NULL
+           , NULL
+           , 'SUBA05627'
            , NULL
            , NULL
            , NULL

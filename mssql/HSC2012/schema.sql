@@ -246,8 +246,9 @@ ALTER TABLE [dbo].[JobInfo] CHECK CONSTRAINT [FK_JobInfo_VesselInfo]
 GO
 
 -- QUERY
-CREATE PROCEDURE HSCGetStuffStsByCntrIDOrHBL @inputContainerNumber nvarchar(10)
-AS
+CREATE PROCEDURE HSCGetStuffStsByCntrIDOrHBL @inputContainerNumber nvarchar(7), @inputHBL varchar(50)
+AS BEGIN 
+IF isnull(@inputContainerNumber, '') <> '' BEGIN
   SELECT
     CI.ContainerPrefix,
     CI.ContainerNumber,
