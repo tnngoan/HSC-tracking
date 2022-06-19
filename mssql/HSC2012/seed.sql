@@ -6,13 +6,16 @@ GO
 -- DELETE FROM [dbo].[ContainerInfo]
 -- DELETE FROM [dbo].[Place of Delivery]
 
-INSERT INTO [dbo].[Place of Delivery] ([DeliveryID]) VALUES ('hsc')
+INSERT INTO [dbo].[Place of Delivery]
+    ([DeliveryID])
+VALUES
+    (108)
 GO
 
 INSERT INTO [dbo].[VesselInfo]
     ([VesselName],[InVoy],[OutVoy],[ETA],[COD],[Berth],[ETD],[ServiceRoute],[VesselFullName],[ShippingLine])
 VALUES
-    ('seedVessel', NULL, NULL,'2023-08-13 16:30:00.000', NULL, NULL, NULL, NULL, 'seedingFirstVessel', NULL)
+    ('seedVessel', NULL, NULL, '2023-08-13 16:30:00.000', NULL, NULL, NULL, NULL, 'seedingFirstVessel', NULL)
 GO
 
 INSERT INTO [dbo].[JobInfo]
@@ -21,7 +24,7 @@ INSERT INTO [dbo].[JobInfo]
     [CreatedBy],[ModifiedBy],[CreatedDt],[ModifiedDt],[JobType],[InvRevise],[InvCash],[CntrRequiredDate],[CntrStuffingDate])
 VALUES
     (1, NULL, NULL, 0, NULL, NULL, 132045, NULL, NULL, 'Import',
-        'hsc', '4/17/2022 23:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+        108, '6/18/2022 23:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
         NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
 
@@ -49,3 +52,32 @@ GO
 -- SELECT * FROM [dbo].[VesselInfo];
 -- SELECT * FROM [dbo].[ContainerInfo];
 -- SELECT * FROM [dbo].[JobInfo];
+
+-- Declare temp table and query data using @inputHBL
+DECLARE @CntrChgs TABLE (
+    CntrID int,
+    HBL varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS,
+    TotalAmount money
+			);
+
+INSERT INTO @CntrChgs
+VALUES
+    (309089, 'SUBA05626', 23000);
+
+SELECT CI.ContainerPrefix, CI.ContainerNumber, CI.LastDay, I.HBL, MAX(I.MWeight) [Weight], I.Status InvStatus, JI.ClientID, isnull(MAX(CC.TotalAmount), 0) TotalAmount
+FROM HSC2012.dbo.VesselInfo VI INNER JOIN
+    HSC2012.dbo.JobInfo JI ON VI.VesselID = JI.VesselID INNER JOIN
+    hsc2012.dbo.ContainerInfo CI ON JI.JobNumber = CI.JobNumber INNER JOIN
+    HSC2017.dbo.HSC_Inventory I ON CI.Dummy = I.CntrID INNER JOIN
+    @CntrChgs CC ON CI.Dummy = CC.CntrID AND I.HBL = CC.HBL
+WHERE JI.[Import/Export] = 'Import'
+    AND CI.Status <> 'CANCELLED'
+    AND I.DelStatus = 'N'
+    AND (CI.[DateofStuf/Unstuf] IS NULL OR (CI.[DateofStuf/Unstuf] > GETDATE() - 7))
+    AND YEAR(VI.ETA) >= 2020
+    AND JI.TruckTo IN ('108','109','110','111','112')
+    AND I.HBL = @inputHBL
+GROUP BY JI.ClientID, CI.ContainerPrefix, CI.ContainerNumber, I.Status, CI.LastDay, I.HBL
+ORDER BY I.HBL
+GO
+
