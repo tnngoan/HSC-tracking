@@ -9,7 +9,7 @@ GO
 INSERT INTO [dbo].[Place of Delivery]
     ([DeliveryID])
 VALUES
-    ('hsc')
+    (108)
 GO
 
 INSERT INTO [dbo].[VesselInfo]
@@ -24,7 +24,7 @@ INSERT INTO [dbo].[JobInfo]
     [CreatedBy],[ModifiedBy],[CreatedDt],[ModifiedDt],[JobType],[InvRevise],[InvCash],[CntrRequiredDate],[CntrStuffingDate])
 VALUES
     (1, NULL, NULL, 0, NULL, NULL, 132045, NULL, NULL, 'Import',
-        'hsc', '4/17/2022 23:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+        108, '6/18/2022 23:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
         NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
 
@@ -53,6 +53,7 @@ GO
 -- SELECT * FROM [dbo].[ContainerInfo];
 -- SELECT * FROM [dbo].[JobInfo];
 
+-- Declare temp table and query data using @inputHBL
 DECLARE @CntrChgs TABLE (
     CntrID int,
     HBL varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS,
@@ -74,7 +75,9 @@ WHERE JI.[Import/Export] = 'Import'
     AND I.DelStatus = 'N'
     AND (CI.[DateofStuf/Unstuf] IS NULL OR (CI.[DateofStuf/Unstuf] > GETDATE() - 7))
     AND YEAR(VI.ETA) >= 2020
-    AND JI.TruckTo IN ('hsc','108','109','110','111','112')
-    AND I.HBL = 'SUBA05626'
+    AND JI.TruckTo IN ('108','109','110','111','112')
+    AND I.HBL = @inputHBL
 GROUP BY JI.ClientID, CI.ContainerPrefix, CI.ContainerNumber, I.Status, CI.LastDay, I.HBL
 ORDER BY I.HBL
+GO
+

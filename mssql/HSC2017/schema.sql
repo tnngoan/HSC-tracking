@@ -9,7 +9,8 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_PADDING ON
 GO
-CREATE TABLE [dbo].[HSC_Inventory](
+CREATE TABLE [dbo].[HSC_Inventory]
+(
 	[InventoryID] [int] IDENTITY(1,1) NOT NULL,
 	[CntrID] [int] NOT NULL,
 	[SequenceNo] [int] NULL,
@@ -51,7 +52,7 @@ CREATE TABLE [dbo].[HSC_Inventory](
 	[TransporterID] [int] NULL,
 	[CheckStatusStuffing] [char](1) NULL,
 	[BlockProcess] [bit] NOT NULL,
- CONSTRAINT [PK_HSC_Inventory] PRIMARY KEY CLUSTERED 
+	CONSTRAINT [PK_HSC_Inventory] PRIMARY KEY CLUSTERED 
 (
 	[InventoryID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
@@ -91,4 +92,89 @@ ALTER TABLE [dbo].[HSC_Inventory] ADD  DEFAULT ('N') FOR [CheckStatusStuffing]
 GO
 /****** Object:  Default [DF__HSC_Inven__Block__3E131840]    Script Date: 04/26/2022 17:42:02 ******/
 ALTER TABLE [dbo].[HSC_Inventory] ADD  DEFAULT ((0)) FOR [BlockProcess]
+GO
+
+
+CREATE TABLE [dbo].[HSC_InventoryBreakdown]
+(
+	[InventoryPalletID] [int] NOT NULL,
+	[BreakDownID] [int] IDENTITY(3000000,1) NOT NULL,
+	[Markings] [varchar](500) NULL,
+	[Quantity] [int] NULL,
+	[Type] [varchar](50) NULL,
+	[Length] [int] NULL,
+	[Breadth] [int] NULL,
+	[Height] [int] NULL,
+	[Volume] [float] NULL,
+	[Remarks] [varchar](255) NULL,
+	[CreatedBy] [nvarchar](50) NULL,
+	[CreatedDt] [datetime] NULL,
+	[UpdatedBy] [nvarchar](50) NULL,
+	[UpdatedDt] [datetime] NULL,
+	[DelStatus] [varchar](1) NULL,
+	[Flags] [varchar](255) NULL,
+	[Tally] [varchar](100) NULL,
+	[Weight] [float] NULL,
+	CONSTRAINT [PK_HSC_InventoryBreakdownNew] PRIMARY KEY CLUSTERED
+(
+[BreakDownID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object: Table [dbo].[HSC_InventoryPallet] Script Date: 16/06/2022 10:02:52 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[HSC_InventoryPallet]
+(
+	[InventoryPalletID] [int] IDENTITY(3000000,1) NOT NULL,
+	[InventoryID] [int] NULL,
+	[SequenceNo] [int] NULL,
+	[ExpCntrID] [int] NULL,
+	[Reserved] [bit] NULL,
+	[ReservedBy] [nvarchar](50) NULL,
+	[ReservedDt] [datetime] NULL,
+	[ClearedDate] [datetime] NULL,
+	[DeliveryID] [int] NULL,
+	[CreatedBy] [nvarchar](50) NULL,
+	[CreatedDt] [datetime] NULL,
+	[UpdatedBy] [nvarchar](50) NULL,
+	[UpdatedDt] [datetime] NULL,
+	[DelStatus] [varchar](1) NULL,
+	[InterWhseFlag] [bit] NULL,
+	[CurrentLocation] [varchar](50) NULL,
+	[InterWhseTo] [varchar](50) NULL,
+	[Tag] [varchar](50) NULL,
+	[Location] [varchar](50) NULL,
+	[isActivityForStuffing] [tinyint] NULL,
+	CONSTRAINT [PK_HSC_InventoryPalletNew] PRIMARY KEY CLUSTERED
+(
+[InventoryPalletID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[HSC_InventoryBreakdown] ADD DEFAULT ((0)) FOR [InventoryPalletID]
+GO
+ALTER TABLE [dbo].[HSC_InventoryBreakdown] ADD DEFAULT ((0)) FOR [Quantity]
+GO
+ALTER TABLE [dbo].[HSC_InventoryBreakdown] ADD DEFAULT ((0)) FOR [Length]
+GO
+ALTER TABLE [dbo].[HSC_InventoryBreakdown] ADD DEFAULT ((0)) FOR [Breadth]
+GO
+ALTER TABLE [dbo].[HSC_InventoryBreakdown] ADD DEFAULT ((0)) FOR [Height]
+GO
+ALTER TABLE [dbo].[HSC_InventoryBreakdown] ADD DEFAULT ((0)) FOR [Volume]
+GO
+ALTER TABLE [dbo].[HSC_InventoryBreakdown] ADD DEFAULT ('N') FOR [DelStatus]
+GO
+ALTER TABLE [dbo].[HSC_InventoryBreakdown] ADD DEFAULT ((0)) FOR [Weight]
+GO
+ALTER TABLE [dbo].[HSC_InventoryPallet] ADD DEFAULT ((0)) FOR [Reserved]
+GO
+ALTER TABLE [dbo].[HSC_InventoryPallet] ADD DEFAULT ('N') FOR [DelStatus]
+GO
+ALTER TABLE [dbo].[HSC_InventoryPallet] ADD DEFAULT ((0)) FOR [InterWhseFlag]
+GO
+ALTER TABLE [dbo].[HSC_InventoryPallet] ADD DEFAULT ((0)) FOR [isActivityForStuffing]
 GO

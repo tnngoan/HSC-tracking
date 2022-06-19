@@ -11,7 +11,8 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_PADDING ON
 GO
-CREATE TABLE [dbo].[VesselInfo](
+CREATE TABLE [dbo].[VesselInfo]
+(
 	[VesselID] [int] IDENTITY(132000,1) NOT NULL,
 	[VesselName] [varchar](50) NOT NULL,
 	[InVoy] [varchar](6) NULL,
@@ -23,7 +24,7 @@ CREATE TABLE [dbo].[VesselInfo](
 	[ServiceRoute] [varchar](50) NULL,
 	[VesselFullName] [varchar](100) NOT NULL,
 	[ShippingLine] [varchar](3) NULL,
- CONSTRAINT [PK_VesselInfo] PRIMARY KEY CLUSTERED 
+	CONSTRAINT [PK_VesselInfo] PRIMARY KEY CLUSTERED 
 (
 	[VesselID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
@@ -38,7 +39,8 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_PADDING ON
 GO
-CREATE TABLE [dbo].[JobInfo](
+CREATE TABLE [dbo].[JobInfo]
+(
 	[JobNumber] [int] NOT NULL,
 	[InvoiceNumber] [int] NULL,
 	[InvoiceDate] [smalldatetime] NULL,
@@ -68,7 +70,7 @@ CREATE TABLE [dbo].[JobInfo](
 	[InvCash] [varchar](1) NULL,
 	[CntrRequiredDate] [datetime] NULL,
 	[CntrStuffingDate] [datetime] NULL,
- CONSTRAINT [PK_JobInfo] PRIMARY KEY CLUSTERED 
+	CONSTRAINT [PK_JobInfo] PRIMARY KEY CLUSTERED 
 (
 	[JobNumber] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
@@ -81,7 +83,8 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_PADDING ON
 GO
-CREATE TABLE [dbo].[Place of Delivery](
+CREATE TABLE [dbo].[Place of Delivery]
+(
 	[DeliveryID] [varchar](20) NOT NULL,
 	[CompanyName] [varchar](50) NULL,
 	[Address] [varchar](50) NULL,
@@ -89,7 +92,7 @@ CREATE TABLE [dbo].[Place of Delivery](
 	[Address4] [varchar](50) NULL,
 	[Habit] [varchar](50) NULL,
 	[PTC] [varchar](50) NULL,
- CONSTRAINT [PK_Place of Delivery] PRIMARY KEY CLUSTERED 
+	CONSTRAINT [PK_Place of Delivery] PRIMARY KEY CLUSTERED 
 (
 	[DeliveryID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
@@ -106,7 +109,8 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_PADDING ON
 GO
-CREATE TABLE [dbo].[ContainerInfo] (
+CREATE TABLE [dbo].[ContainerInfo]
+(
 	[Dummy] [int] IDENTITY(309000,1) NOT NULL,
 	[JobNumber] [int] NOT NULL,
 	[ContainerPrefix] [varchar](6) NULL,
@@ -164,7 +168,7 @@ CREATE TABLE [dbo].[ContainerInfo] (
 	[ReExport] [bit] NULL,
 	[J5Seal] [varchar](20) NULL,
 	[TallySheetDateSend] [datetime] NULL,
- CONSTRAINT [PK_ContainerInfo] PRIMARY KEY CLUSTERED 
+	CONSTRAINT [PK_ContainerInfo] PRIMARY KEY CLUSTERED 
 (
 	[Dummy] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
@@ -246,36 +250,39 @@ ALTER TABLE [dbo].[JobInfo] CHECK CONSTRAINT [FK_JobInfo_VesselInfo]
 GO
 
 -- QUERY
-CREATE PROCEDURE HSCGetStuffStsByCntrIDOrHBL @inputContainerNumber nvarchar(7), @inputHBL varchar(50)
-AS BEGIN 
-IF isnull(@inputContainerNumber, '') <> '' BEGIN
-  SELECT
-    CI.ContainerPrefix,
-    CI.ContainerNumber,
-    VI.ETA,
-    CI.[DateofStuf/Unstuf],
-    CI.LastDay,
-    CI.DeliverTo Location,
-    VI.COD,
-    CI.F5UnstuffDate,
-    CI.F5LastDay,
-    CASE
+CREATE PROCEDURE HSCGetStuffStsByCntrIDOrHBL
+	@inputContainerNumber nvarchar(7),
+	@inputHBL varchar(50)
+AS
+BEGIN
+	IF isnull(@inputContainerNumber, '') <> '' BEGIN
+		SELECT
+			CI.ContainerPrefix,
+			CI.ContainerNumber,
+			VI.ETA,
+			CI.[DateofStuf/Unstuf],
+			CI.LastDay,
+			CI.DeliverTo Location,
+			VI.COD,
+			CI.F5UnstuffDate,
+			CI.F5LastDay,
+			CASE
       WHEN CI.[DateofStuf/Unstuf] IS NULL THEN VI.ETA + 4
       ELSE NULL
     END ScheduleDate
-  FROM HSC2012.dbo.VesselInfo VI
-  INNER JOIN HSC2012.dbo.JobInfo JI
-    ON VI.VesselID = JI.VesselID
-  INNER JOIN hsc2012.dbo.ContainerInfo CI
-    ON JI.JobNumber = CI.JobNumber
-  WHERE JI.[Import/Export] = 'Import'
-  AND CI.Status <> 'CANCELLED'
-  AND (CI.[DateofStuf/Unstuf] IS NULL
-  OR (CI.[DateofStuf/Unstuf] > GETDATE() - 7))
-  AND YEAR(VI.ETA) >= 2020
-  AND JI.TruckTo IN ('hsc', '108', '109', '110', '111', '112')
-  AND CI.ContainerNumber = @inputContainerNumber
-  GROUP BY CI.ContainerPrefix,
+		FROM HSC2012.dbo.VesselInfo VI
+			INNER JOIN HSC2012.dbo.JobInfo JI
+			ON VI.VesselID = JI.VesselID
+			INNER JOIN hsc2012.dbo.ContainerInfo CI
+			ON JI.JobNumber = CI.JobNumber
+		WHERE JI.[Import/Export] = 'Import'
+			AND CI.Status <> 'CANCELLED'
+			AND (CI.[DateofStuf/Unstuf] IS NULL
+			OR (CI.[DateofStuf/Unstuf] > GETDATE() - 7))
+			AND YEAR(VI.ETA) >= 2020
+			AND JI.TruckTo IN ('hsc', '108', '109', '110', '111', '112')
+			AND CI.ContainerNumber = @inputContainerNumber
+		GROUP BY CI.ContainerPrefix,
            CI.ContainerNumber,
            CI.[DateofStuf/Unstuf],
            CI.LastDay,
