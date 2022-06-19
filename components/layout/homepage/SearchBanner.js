@@ -11,11 +11,9 @@ const SearchBanner = () => {
     const searchNum = keyword.trim();
     const containerNumLength = 7;
     const maxLength = 17;
-    if(searchNum.length === 0){
-      return;
-    }
-    if (searchNum.length > maxLength) {
-      return;
+    if (searchNum.length === 0 || searchNum.length < 7 || searchNum.length > maxLength) {
+      alert('Invalid input!')
+      return
     }
     if (searchNum.length === containerNumLength) {
       router.push({
@@ -37,7 +35,7 @@ const SearchBanner = () => {
         onSubmit={submitHandler}
       >
         <input
-          className="text-green-999 py-3 px-4 rounded-md focus-green-999 md:w-full focus:ring"
+          className="text-green-999 py-3 lg:py-6 lg:text-2xl px-4 font-bold rounded-md focus-green-999 md:w-full focus:ring outline-none ring-green-600 outline-green-800"
           type="text"
           minLength="7"
           maxLength="17"
@@ -45,7 +43,7 @@ const SearchBanner = () => {
           onChange={(e) => setKeyword(e.target.value)}
         />
         <button
-          className="px-4 py-3 bg-green-999 rounded-md ml-2 text-white border border-1 border-green-999 opacity-80 focus:ring focus:offset focus:bg-green-800"
+          className="px-4 py-3 lg:py-7 lg:px-7 bg-green-900 rounded-md ml-2 border border-2 border-green-999 opacity-90 outline-neutral-200 ring-neutral-200"
           type="submit"
         >
           <svg
