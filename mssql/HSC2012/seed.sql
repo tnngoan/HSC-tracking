@@ -9,7 +9,7 @@ GO
 INSERT INTO [dbo].[Place of Delivery]
     ([DeliveryID])
 VALUES
-    (108)
+    (109)
 GO
 
 INSERT INTO [dbo].[VesselInfo]
@@ -23,8 +23,8 @@ INSERT INTO [dbo].[JobInfo]
     [TruckTo],[DateJobRaised],[TranshipmentRef],[Consignee],[Enclosure],[PersonHold],[DatePend],[DateSend],[Remarks],[BillingParty],
     [CreatedBy],[ModifiedBy],[CreatedDt],[ModifiedDt],[JobType],[InvRevise],[InvCash],[CntrRequiredDate],[CntrStuffingDate])
 VALUES
-    (1, NULL, NULL, 0, NULL, NULL, 132045, NULL, NULL, 'Import',
-        108, '6/18/2022 23:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    (4, NULL, NULL, 1, NULL, NULL, 132045, NULL, NULL, 'Export',
+        111, '6/19/2022 23:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
         NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
 
@@ -36,12 +36,12 @@ INSERT INTO [dbo].[ContainerInfo]
     [DamageAmtAbsorb],[Bay],[Stevedore],[SevenPoints],[StartTime],[EndTime],[IsOK],[Agent],[ShutOut],[NTUnstuffingStatus],[ReExport],
     [J5Seal],[TallySheetDateSend])
 VALUES
-    (1, 'CAAU', '1234567', NULL, NULL, NULL, 0, 0, NULL, NULL, NULL,
+    (1, 'FDCU', '0637806', NULL, NULL, NULL, 0, 0, NULL, NULL, NULL,
         NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, NULL,
         NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL,
         NULL, NULL, 0, NULL, NULL , NULL , NULL , NULL , NULL , NULL , NULL ,
         NULL , NULL , NULL , NULL , NULL , NULL , NULL , NULL , NULL , NULL , NULL , NULL ),
-    (1, 'CAAU', '2345678', NULL, NULL, NULL, 0, 0, NULL, NULL, NULL,
+    (1, 'FDCU', '0637806', NULL, NULL, NULL, 0, 0, NULL, NULL, NULL,
         NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, NULL,
         NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL,
         NULL, NULL, 0, NULL, NULL , NULL , NULL , NULL , NULL , NULL , NULL ,
@@ -62,7 +62,10 @@ DECLARE @CntrChgs TABLE (
 
 INSERT INTO @CntrChgs
 VALUES
-    (309089, 'SUBA05626', 23000);
+    (309090, 'CAAU 2345678', 100000),
+    (309091, 'FDCU 0637806', 100000),
+    (309092, 'FDCU 0637806', 100000),
+    (309089, 'CAAU 1234567', 100000);
 
 SELECT CI.ContainerPrefix, CI.ContainerNumber, CI.LastDay, I.HBL, MAX(I.MWeight) [Weight], I.Status InvStatus, JI.ClientID, isnull(MAX(CC.TotalAmount), 0) TotalAmount
 FROM HSC2012.dbo.VesselInfo VI INNER JOIN

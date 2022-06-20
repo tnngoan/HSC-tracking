@@ -250,45 +250,269 @@ ALTER TABLE [dbo].[JobInfo] CHECK CONSTRAINT [FK_JobInfo_VesselInfo]
 GO
 
 -- QUERY
-CREATE PROCEDURE HSCGetStuffStsByCntrIDOrHBL
-	@inputContainerNumber nvarchar(7),
+-- CREATE PROCEDURE HSCGetStuffStsByCntrIDOrHBL
+-- 	@inputContainerNumber nvarchar(7),
+-- 	@inputHBL varchar(50)
+-- AS
+-- BEGIN
+-- 	IF isnull(@inputContainerNumber, '') <> '' BEGIN
+-- 		SELECT
+-- 			CI.ContainerPrefix,
+-- 			CI.ContainerNumber,
+-- 			VI.ETA,
+-- 			CI.[DateofStuf/Unstuf],
+-- 			CI.LastDay,
+-- 			CI.DeliverTo Location,
+-- 			VI.COD,
+-- 			CI.F5UnstuffDate,
+-- 			CI.F5LastDay,
+-- 			CASE
+--       WHEN CI.[DateofStuf/Unstuf] IS NULL THEN VI.ETA + 4
+--       ELSE NULL
+--     END ScheduleDate
+-- 		FROM HSC2012.dbo.VesselInfo VI
+-- 			INNER JOIN HSC2012.dbo.JobInfo JI
+-- 			ON VI.VesselID = JI.VesselID
+-- 			INNER JOIN hsc2012.dbo.ContainerInfo CI
+-- 			ON JI.JobNumber = CI.JobNumber
+-- 		WHERE JI.[Import/Export] = 'Import'
+-- 			AND CI.Status <> 'CANCELLED'
+-- 			AND (CI.[DateofStuf/Unstuf] IS NULL
+-- 			OR (CI.[DateofStuf/Unstuf] > GETDATE() - 7))
+-- 			AND YEAR(VI.ETA) >= 2020
+-- 			AND JI.TruckTo IN ('hsc', '108', '109', '110', '111', '112')
+-- 			AND CI.ContainerNumber = @inputContainerNumber
+-- 		GROUP BY CI.ContainerPrefix,
+--            CI.ContainerNumber,
+--            CI.[DateofStuf/Unstuf],
+--            CI.LastDay,
+--            CI.F5UnstuffDate,
+--            CI.F5LastDay,
+--            VI.ETA,
+--            VI.COD,
+--            CI.DeliverTo
+-- GO
+
+
+-- query from unknow input
+ALTER PROCEDURE [dbo].[HSCGetStuffStsByCntrIDOrHBL]
+	@inputContainerNumber varchar(7),
 	@inputHBL varchar(50)
 AS
-BEGIN
-	IF isnull(@inputContainerNumber, '') <> '' BEGIN
-		SELECT
-			CI.ContainerPrefix,
-			CI.ContainerNumber,
-			VI.ETA,
-			CI.[DateofStuf/Unstuf],
-			CI.LastDay,
-			CI.DeliverTo Location,
-			VI.COD,
-			CI.F5UnstuffDate,
-			CI.F5LastDay,
-			CASE
-      WHEN CI.[DateofStuf/Unstuf] IS NULL THEN VI.ETA + 4
-      ELSE NULL
-    END ScheduleDate
-		FROM HSC2012.dbo.VesselInfo VI
-			INNER JOIN HSC2012.dbo.JobInfo JI
-			ON VI.VesselID = JI.VesselID
-			INNER JOIN hsc2012.dbo.ContainerInfo CI
-			ON JI.JobNumber = CI.JobNumber
+Begin
+	if isnull(@inputContainerNumber, '') <> ''
+		begin
+		Select CI.ContainerPrefix, CI.ContainerNumber, VI.ETA, CI.[DateofStuf/Unstuf], CI.LastDay, CI.DeliverTo Location, VI.COD, CI.F5UnstuffDate, CI.F5LastDay, CASE WHEN CI.[DateofStuf/Unstuf] IS NULL THEN VI.ETA + 4 ELSE NULL END ScheduleDate
+		FROM HSC2012.dbo.VesselInfo VI INNER JOIN
+			HSC2012.dbo.JobInfo JI ON VI.VesselID = JI.VesselID INNER JOIN
+			hsc2012.dbo.ContainerInfo CI ON JI.JobNumber = CI.JobNumber
 		WHERE JI.[Import/Export] = 'Import'
 			AND CI.Status <> 'CANCELLED'
-			AND (CI.[DateofStuf/Unstuf] IS NULL
-			OR (CI.[DateofStuf/Unstuf] > GETDATE() - 7))
+			AND (CI.[DateofStuf/Unstuf] IS NULL OR (CI.[DateofStuf/Unstuf] > GETDATE() - 7))
 			AND YEAR(VI.ETA) >= 2020
-			AND JI.TruckTo IN ('hsc', '108', '109', '110', '111', '112')
+			AND JI.TruckTo IN ('hsc','108','109','110','111','112')
 			AND CI.ContainerNumber = @inputContainerNumber
-		GROUP BY CI.ContainerPrefix,
-           CI.ContainerNumber,
-           CI.[DateofStuf/Unstuf],
-           CI.LastDay,
-           CI.F5UnstuffDate,
-           CI.F5LastDay,
-           VI.ETA,
-           VI.COD,
-           CI.DeliverTo
-GO
+		GROUP BY CI.ContainerPrefix, CI.ContainerNumber, CI.[DateofStuf/Unstuf], CI.LastDay, CI.F5UnstuffDate, CI.F5LastDay, VI.ETA, VI.COD, CI.DeliverTo
+	end
+	else
+		begin
+		DECLARE @CltID varchar(12)
+		DECLARE @Rgn nvarchar(50)
+		DECLARE @Ctry nvarchar(50)
+		DECLARE @Prt nvarchar(50)
+		DECLARE @ETA datetime
+		DECLARE @Dmy int
+		DECLARE @WhsChgsID int
+		DECLARE @TtlAmt money
+		DECLARE @Dt datetime
+		DECLARE @MVol float
+		DECLARE @MWgt float
+		DECLARE @HBL varchar(50)
+		DECLARE @InvSts varchar(50)
+		DECLARE @ChgsCode varchar(10)
+		DECLARE @Desc varchar(50)
+		DECLARE @Amount money
+		DECLARE @U nvarchar(50)
+		DECLARE @Wv bit
+		DECLARE @Disc bit
+		DECLARE @Typ varchar(15)
+		DECLARE @RbAmt money
+		DECLARE @RbFm varchar(250)
+		DECLARE @RbAmt1 money
+		DECLARE @RbFm1 varchar(250)
+		DECLARE @ID int
+		DECLARE @Qty float
+		DECLARE @RdUpRt bit
+		DECLARE @NMVol float
+		DECLARE @NMWgt float
+
+		declare @WhsChgs table (
+			ID int,
+			Client nvarchar(50),
+			Consignee nvarchar(50),
+			SpecialCase nvarchar(50),
+			Region nvarchar(50),
+			Country nvarchar(50),
+			Port nvarchar(50),
+			EffectiveDate datetime,
+			EffectiveEta datetime,
+			EffectiveDateType nvarchar(50),
+			RoundUpRT bit,
+			LocalFreeStoragePeriod int,
+			LocalFreeStorageType nvarchar(50),
+			LocalSR money,
+			LocalRF money,
+			TransFreeStoragePeriod int,
+			TransFreeStorageType nvarchar(50),
+			TransSR money,
+			TransRF money,
+			DGSR money,
+			DGRF money,
+			OwnTptUnitFL nvarchar(50),
+			OwnTptFL money,
+			OwnTptMinFL money,
+			OT money,
+			CreatedDt datetime,
+			CreatedBy nvarchar(50),
+			ModifiedDt datetime,
+			ModifiedBy nvarchar(50),
+			MgmtFlag bit
+			)
+
+		declare @WhsChgsStdRt table (
+			ChargesCode varchar(10),
+			Description varchar(50),
+			Amount money,
+			Unit nvarchar(50),
+			Waivable bit,
+			Discountable bit,
+			Type varchar(15),
+			RebateAmount money,
+			RebateFormula varchar(250),
+			RebateAmount1 money,
+			RebateFormula1 varchar(250),
+			ID int
+			);
+
+		declare @CntrChgs table (
+			CntrID int,
+			HBL varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS,
+			TotalAmount money
+			);
+
+		DECLARE cGetImpCntr CURSOR LOCAL FOR
+			SELECT JI.ClientID, PL.Region, PL.Country, PL.Port, VI.ETA, CI.Dummy, I.HBL, I.Status, SUM(I.MVolume) MVol, SUM(I.MWeight) MWt
+		FROM HSC2012.dbo.VesselInfo VI inner join
+			HSC2012.dbo.JobInfo JI on Ji.VesselID = Vi.VesselID inner join
+			hsc2012.dbo.ContainerInfo CI on CI.JobNumber = Ji.JobNumber inner join
+			HSC2017.dbo.HSC_Inventory I on I.CntrID = CI.Dummy inner join
+			hsc2012.dbo.PortLookup PL on PL.Port = Ji.POD
+		WHERE JI.[Import/Export] = 'Import'
+			AND CI.Status <> 'CANCELLED'
+			AND I.DelStatus = 'N'
+			AND I.HBL = @inputHBL
+		GROUP BY JI.ClientID, PL.Region, PL.Country, PL.Port, VI.ETA, CI.Dummy, I.HBL, I.Status
+
+		OPEN cGetImpCntr
+		WHILE(1=1)
+				BEGIN
+			FETCH NEXT FROM cGetImpCntr INTO @CltID, @Rgn, @Ctry, @Prt, @ETA, @Dmy, @HBL, @InvSts, @MVol, @MWgt
+
+			IF @@FETCH_STATUS <> 0
+						BREAK
+
+			IF @CltID IN ('A.HARTRO','CLS_AHAR','ECU','KWE') AND (ISNULL(@InvSts, 'LOCAL') = 'LOCAL' OR @InvSts = '')
+						BEGIN
+				SET @Dt = GETDATE()
+
+				INSERT INTO @WhsChgs
+				EXEC HSC2017.dbo.Charges_GetWhseCharges @CltID, '', '', @Rgn, @Ctry, @Prt, @Dt, @ETA;
+
+				SELECT @WhsChgsID = ID, @RdUpRt = RoundUpRT
+				FROM @WhsChgs;
+
+				delete from @WhsChgs;
+
+				INSERT INTO @WhsChgsStdRt
+				EXEC HSC2017.dbo.Charges_GetDefaultCharges @WhsChgsID;
+
+				DECLARE cGetStdRt CURSOR LOCAL FOR
+							SELECT *
+				FROM @WhsChgsStdRt
+
+				OPEN cGetStdRt
+				WHILE(1=1)
+								BEGIN
+					FETCH NEXT FROM cGetStdRt INTO @ChgsCode, @Desc, @Amount, @U, @Wv, @Disc, @Typ, @RbAmt, @RbFm, @RbAmt1, @RbFm1, @ID
+
+					IF @@FETCH_STATUS <> 0
+										BREAK
+
+					IF @RdUpRt = 1
+										BEGIN
+						SET @NMWgt = CEILING(@MWgt / 1000.0)
+						SET @NMVol = CEILING(@MVol)
+					END
+									ELSE
+										BEGIN
+						SET @NMWgt = @MWgt / 1000.0
+						SET @NMVol = @MVol
+					END
+
+					IF @U = 'b4rt'
+										SET @Qty = CASE WHEN @NMWgt > @NMVol THEN CEILING(@NMWgt / 4.0) ELSE CEILING(@NMVol / 4.0) END
+									ELSE IF @U = 'b3rt'
+										SET @Qty = CASE WHEN @NMWgt > @NMVol THEN CEILING(@NMWgt / 3.0) ELSE CEILING(@NMVol / 3.0) END
+									ELSE IF @U = 'b2rt'
+										SET @Qty = CASE WHEN @NMWgt > @NMVol THEN CEILING(@NMWgt / 2.0) ELSE CEILING(@NMVol / 2.0) END
+									ELSE IF @U = 'rt'
+										BEGIN
+						IF @NMVol = 0
+												SET @Qty = 0
+											ELSE
+												SET @Qty = CASE WHEN @NMWgt > @NMVol THEN CASE WHEN @NMWgt < 1 THEN 1 ELSE @NMWgt END ELSE CASE WHEN @NMVol < 1 THEN 1 ELSE @NMVol END END
+					END
+									ELSE IF @U = 'set'
+										SET @Qty = 1
+
+					UPDATE @WhsChgsStdRt
+									SET Amount = @Qty * @Amount
+									WHERE ChargesCode = @ChgsCode
+				END
+				CLOSE cGetStdRt;
+				DEALLOCATE cGetStdRt;
+
+				SELECT @TtlAmt = ISNULL(SUM(Amount), 0)
+				FROM @WhsChgsStdRt;
+
+				Delete from @WhsChgsStdRt;
+
+				INSERT INTO @CntrChgs
+					(CntrID, HBL, TotalAmount)
+				VALUES(@Dmy, @HBL, @TtlAmt)
+			END
+		END
+		CLOSE cGetImpCntr;
+		DEALLOCATE cGetImpCntr;
+
+		SELECT CI.ContainerPrefix, CI.ContainerNumber, CI.LastDay, I.HBL, MAX(I.MWeight) [Weight], CASE WHEN SUM(ISNULL(IB.Volume,0)) > 0 THEN SUM(ISNULL(IB.Volume,0)) ELSE MAX(I.MVolume) END Volume, SUM(IB.Quantity) Quantity, IB.Markings, IB.Type, IB.Length, IB.Breadth, IB.Height, (ISNULL(IB.Flags, '')) Remarks, I.Status InvStatus, JI.ClientID, isnull(MAX(CC.TotalAmount), 0) TotalAmount
+		FROM HSC2012.dbo.VesselInfo VI INNER JOIN
+			HSC2012.dbo.JobInfo JI ON VI.VesselID = JI.VesselID INNER JOIN
+			hsc2012.dbo.ContainerInfo CI ON JI.JobNumber = CI.JobNumber INNER JOIN
+			HSC2017.dbo.HSC_Inventory I ON CI.Dummy = I.CntrID INNER JOIN
+			hsc2017.dbo.HSC_InventoryPallet IP ON I.InventoryID = IP.InventoryID INNER JOIN
+			hsc2017.dbo.HSC_InventoryBreakdown IB ON IP.InventoryPalletID = IB.InventoryPalletID LEFT JOIN
+			@CntrChgs CC ON CI.Dummy = CC.CntrID AND I.HBL = CC.HBL
+		WHERE JI.[Import/Export] = 'Import'
+			AND CI.Status <> 'CANCELLED'
+			AND I.DelStatus = 'N'
+			AND IP.DelStatus = 'N'
+			AND IB.DelStatus = 'N'
+			AND (CI.[DateofStuf/Unstuf] IS NULL OR (CI.[DateofStuf/Unstuf] > GETDATE() - 7))
+			AND YEAR(VI.ETA) >= 2020
+			AND JI.TruckTo IN ('hsc','108','109','110','111','112')
+			AND I.HBL = @inputHBL
+		GROUP BY JI.ClientID, CI.ContainerPrefix, CI.ContainerNumber, I.Status, CI.LastDay, I.HBL, IB.Markings, IB.Type, IB.Length, IB.Breadth, IB.Height, IB.Flags
+		ORDER BY I.HBL
+	end
+end
