@@ -13,10 +13,13 @@ export const insertSubcriber = async () => {
 
 };
 
-export const connectLocal = async (containerNumber) => { // todo: fix name
+export const connectLocal = async (containerNumber, hblNumber) => { // todo: fix name
   let pool = await sql.connect(configLocal);
   let returnObj = {};
-  return pool.request().input('inputContainerNumber', sql.VarChar, containerNumber || " ").execute('dbo.HSCGetStuffStsByCntrIDOrHBL')
+  return pool.request()
+    .input('inputContainerNumber', sql.VarChar, containerNumber || '')
+    .input('inputHBL', sql.VarChar, hblNumber || '')
+    .execute('dbo.HSCGetStuffStsByCntrIDOrHBL')
     .then((result, err) => {
       console.log("result", result)
       returnObj.data = result.recordset
@@ -25,7 +28,7 @@ export const connectLocal = async (containerNumber) => { // todo: fix name
     }).catch((err) => console.log(err))
 }
 
-export const insertLocal = async (email) => {
+export const insertLocal = async (contact) => {
   let pool = await sql.connect(configLocal);
   let returnMessage = ''
   let res = await pool.request().input('email').execute('dbo.').then((res, err) => {

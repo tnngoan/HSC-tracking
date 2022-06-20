@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { searchByContainerNumber, searchByHblNumber } from '../store'
 // import { Spinner } from "../components/layout";
-import ContainerDetails from "../components/details/ContainerDetails";
+import DetailsView from "../components/details/DetailsView";
 import axios from "axios";
 
 const Details = () => {
   const router = useRouter();
   const [checking, setChecking] = useState(true);
+  const [result, setResult] = useState({});
   useEffect(() => {
     const { type, value } = { ...router.query };
     const checkDetails = async () => {
@@ -17,15 +17,14 @@ const Details = () => {
       if (type && value) {
         setChecking(true);
         const params = {
-          containerNumber: value
+          [type]: value
         }
-        console.log(new URLSearchParams(params).toString())
+        console.log("params at client", new URLSearchParams(params).toString())
         const res = await axios.get(`/api/details?${new URLSearchParams(params).toString()}`);
         if (res.status !== 200) {
           router.push({ pathname: "/error" });
         } else {
-          const result = res.data.data[0];
-          type === 'container' ? searchByContainerNumber.setDetails(result) : searchByHblNumber.setDetails(result)
+          setResult(res.data.data[0])
         }
         setChecking(false);
       }
@@ -34,7 +33,7 @@ const Details = () => {
   }, [router]);
   return (
     <>
-      {router.query.type === 'container' ? <ContainerDetails /> : null}
+      <DetailsView data={result} />
     </>
   );
 };
