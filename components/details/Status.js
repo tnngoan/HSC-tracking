@@ -2,7 +2,6 @@ import React from 'react'
 import moment from 'moment'
 
 const Status = ({ data }) => {
-    console.log(data)
     return (
         <div>
             {data.HBL ? (
@@ -63,7 +62,7 @@ const Status = ({ data }) => {
                     </div>
                     <div className='flex justify-between py-2'>
                         <span className='font-bold'>Last day: </span>
-                        <soan>{data.lastDay ? moment.utc(data.lastDay).format("llll") : moment().utc(data.ETA).add(4, 'days').format("llll")}</soan>
+                        <span>{data.lastDay ? moment.utc(data.lastDay).format("llll") : moment().utc(data.ETA).add(4, 'days').format("llll")}</span>
                     </div>
                     <div className='flex justify-between py-2'>
                         <span className='font-bold'>Location: </span>

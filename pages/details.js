@@ -19,7 +19,6 @@ const Details = () => {
         const params = {
           [type]: value
         }
-        console.log("params at client", new URLSearchParams(params).toString())
         const res = await axios.get(`/api/details?${new URLSearchParams(params).toString()}`);
         if (res.status !== 200) {
           router.push({ pathname: "/error" });

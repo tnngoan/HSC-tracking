@@ -31,10 +31,17 @@ export const connectLocal = async (containerNumber, hblNumber) => { // todo: fix
 export const insertLocal = async (contact) => {
   let pool = await sql.connect(configLocal);
   let returnMessage = ''
-  let res = await pool.request().input('email').execute('dbo.').then((res, err) => {
-    return res.json()
-  }).catch((err) => {
-    console.log(err)
-  }) // this is missing something
+  let res = await pool.request()
+    .input('ContactType', sql.VarChar, contactType)
+    .input('ContactNo', sql.VarChar, contactNo)
+    .input('ContainerNo', sql.VarChar, containerNo)
+    .input('HBLNo', sql.VarChar, hblNo)
+    .execute('dbo.HSC_AlertContact')
+    .then((res) => {
+      console.log(res.json())
+      return res.json()
+    }).catch((err) => {
+      console.log(err)
+    }) // this is missing something
 }
 
