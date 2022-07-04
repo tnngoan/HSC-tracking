@@ -249,52 +249,49 @@ GO
 ALTER TABLE [dbo].[JobInfo] CHECK CONSTRAINT [FK_JobInfo_VesselInfo]
 GO
 
+
+/** Object:  Table [dbo].[HSC_AlertContact]    Script Date: 06/21/2022 12:50:21 **/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[HSC_AlertContact](
+	[ContactType] [char](1) NOT NULL,
+	[ContactNo] [varchar](60) NOT NULL,
+	[ContainerNo] [char](7) NOT NULL,
+	[HBLNo] [varchar](50) NOT NULL,
+	[CreatedDate] [datetime] NOT NULL,
+	[ModifiedDate] [datetime] NULL,
+	[Closed] [bit] NOT NULL,
+ CONSTRAINT [PK_HSC_AlertContact] PRIMARY KEY CLUSTERED 
+(
+	[ContactType] ASC,
+	[ContactNo] ASC,
+	[ContainerNo] ASC,
+	[HBLNo] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+ALTER TABLE [dbo].[HSC_AlertContact] ADD  DEFAULT ('') FOR [HBLNo]
+GO
+
+ALTER TABLE [dbo].[HSC_AlertContact] ADD  DEFAULT (getdate()) FOR [CreatedDate]
+GO
+
+ALTER TABLE [dbo].[HSC_AlertContact] ADD  DEFAULT ((0)) FOR [Closed]
+GO
+
 -- QUERY
--- CREATE PROCEDURE HSCGetStuffStsByCntrIDOrHBL
--- 	@inputContainerNumber nvarchar(7),
--- 	@inputHBL varchar(50)
--- AS
--- BEGIN
--- 	IF isnull(@inputContainerNumber, '') <> '' BEGIN
--- 		SELECT
--- 			CI.ContainerPrefix,
--- 			CI.ContainerNumber,
--- 			VI.ETA,
--- 			CI.[DateofStuf/Unstuf],
--- 			CI.LastDay,
--- 			CI.DeliverTo Location,
--- 			VI.COD,
--- 			CI.F5UnstuffDate,
--- 			CI.F5LastDay,
--- 			CASE
---       WHEN CI.[DateofStuf/Unstuf] IS NULL THEN VI.ETA + 4
---       ELSE NULL
---     END ScheduleDate
--- 		FROM HSC2012.dbo.VesselInfo VI
--- 			INNER JOIN HSC2012.dbo.JobInfo JI
--- 			ON VI.VesselID = JI.VesselID
--- 			INNER JOIN hsc2012.dbo.ContainerInfo CI
--- 			ON JI.JobNumber = CI.JobNumber
--- 		WHERE JI.[Import/Export] = 'Import'
--- 			AND CI.Status <> 'CANCELLED'
--- 			AND (CI.[DateofStuf/Unstuf] IS NULL
--- 			OR (CI.[DateofStuf/Unstuf] > GETDATE() - 7))
--- 			AND YEAR(VI.ETA) >= 2020
--- 			AND JI.TruckTo IN ('hsc', '108', '109', '110', '111', '112')
--- 			AND CI.ContainerNumber = @inputContainerNumber
--- 		GROUP BY CI.ContainerPrefix,
---            CI.ContainerNumber,
---            CI.[DateofStuf/Unstuf],
---            CI.LastDay,
---            CI.F5UnstuffDate,
---            CI.F5LastDay,
---            VI.ETA,
---            VI.COD,
---            CI.DeliverTo
--- GO
-
-
--- query from unknow input
 ALTER PROCEDURE [dbo].[HSCGetStuffStsByCntrIDOrHBL]
 	@inputContainerNumber varchar(7),
 	@inputHBL varchar(50)

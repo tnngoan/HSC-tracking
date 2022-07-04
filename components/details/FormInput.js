@@ -1,33 +1,43 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useRouter } from "next/router"
+import axios from "axios"
+import { validateContact } from '../../utility/validate'
 
-const FormInput = () => {
-    const [email, setEmail] = useState("")
-    const typingTimeoutRef = useRef(null)
+const FormInput = ({ data }) => {
+    const router = useRouter()
+    const [contactNo, setContactNo] = useState("")
 
-    const validateContactType = (e) => {
-        let contact = (e.target.value).trim();
-        console.log("contact", contact)
-    }
-
-    const submitEmail = (e) => {
-        console.log(email)
-    }
-    const updateInput = (e) => {
-        setEmail(e.target.value)
-        if (typingTimeoutRef.current) {
-            clearTimeout(typingTimeoutRef.current)
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const body = {
+            contactNo: contactNo,
+            contactType: validateContact(contactNo),
+            hblNo: data.HBL, containerNo: data.ContainerNumber
         }
-        typingTimeoutRef.current = setTimeout(() => {
-            const input = e.target.value;
-            console.log(input)
-        }, 500)
+        insert(body)
+        setContactNo("")
     }
+
+    const insert = async (body) => {
+        const res = await axios.post(`/api/subscribe`, { body })
+        if (res.status !== 200) {
+            router.push({ pathname: "/error" })
+        } else {
+            alert("added sucessful")
+        }
+    }
+
     return (
-        <div className='flex justify-between'>
-            <input onChange={updateInput} value={email} type="email" placeholder='Insert email or phone number' className='w-3/4 px-4 border border-1 rounded-md mr-2' />
-            <button onClick={validateContactType} className='border border-1 text-white bg-green-900 border-green-900 rounded-md px-4 py-3 w-1/4 ml-2'>Update me</button>
-        </div>
+        <form onSubmit={handleSubmit} className='flex justify-between'>
+            <input value={contactNo || ""}
+                onChange={(e) => setContactNo(e.target.value)}
+                required title='Email or Phone'
+                pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$|^[0-9]{8}$"
+                placeholder='Insert email or phone number'
+                className='w-3/4 px-4 border border-1 rounded-md mr-2' />
+            <button type="submit" className='border border-1 text-white bg-green-900 border-green-900 rounded-md px-4 py-3 w-1/4 ml-2 hover:ring focus:bg-green-700'>Update me</button>
+        </form>
     )
 }
 
-export default FormInput;
+export default FormInput

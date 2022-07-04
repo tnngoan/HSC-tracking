@@ -12,7 +12,7 @@ const DetailsView = ({ data }) => {
                     <Logo />
                 </div>
                 <Status data={data} />
-                <FormInput />
+                <FormInput data={data} />
                 <HomeButton />
             </div>) : (
                 <div>

@@ -21,7 +21,6 @@ export const connectLocal = async (containerNumber, hblNumber) => { // todo: fix
     .input('inputHBL', sql.VarChar, hblNumber || '')
     .execute('dbo.HSCGetStuffStsByCntrIDOrHBL')
     .then((result, err) => {
-      console.log("result", result)
       returnObj.data = result.recordset
       returnObj.error = err
       return returnObj
@@ -30,11 +29,18 @@ export const connectLocal = async (containerNumber, hblNumber) => { // todo: fix
 
 export const insertLocal = async (contact) => {
   let pool = await sql.connect(configLocal);
-  let returnMessage = ''
-  let res = await pool.request().input('email').execute('dbo.').then((res, err) => {
-    return res.json()
-  }).catch((err) => {
-    console.log(err)
-  }) // this is missing something
+  return pool.request()
+
+    .input('ContactType', sql.VarChar, contact.contactType)
+    .input('ContactNo', sql.VarChar, contact.contactNo)
+    .input('ContainerNo', sql.VarChar, contact.containerNo)
+    .input('HBLNo', sql.VarChar, contact.hblNo)
+
+    .execute('HSCInsertSubcriber')
+    .then((res) => {
+      return res
+    }).catch((err) => {
+      console.log(err)
+    })
 }
 
