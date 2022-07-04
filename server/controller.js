@@ -30,10 +30,6 @@ export const connectLocal = async (containerNumber, hblNumber) => { // todo: fix
 export const insertLocal = async (contact) => {
   let pool = await sql.connect(configLocal);
   return pool.request()
-    // .input('ContactType', sql.VarChar, 'P')
-    // .input('ContactNo', sql.VarChar, '12345678')
-    // .input('ContainerNo', sql.VarChar, '0637806')
-    // .input('HBLNo', sql.VarChar, 'ATL/SIN/C82879')
 
     .input('ContactType', sql.VarChar, contact.contactType)
     .input('ContactNo', sql.VarChar, contact.contactNo)
