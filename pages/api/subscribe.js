@@ -3,7 +3,6 @@ import { insertLocal } from "../../server/controller"
 const handler = async (req, res) => {
     if (req.method === "POST") {
         const contact = req.body.body;
-        console.log(contact)
         const resp = await insertLocal(contact);
         return res.json(resp)
     }

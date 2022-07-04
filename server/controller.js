@@ -23,7 +23,6 @@ export const connectLocal = async (containerNumber, hblNumber) => { // todo: fix
     .then((result, err) => {
       returnObj.data = result.recordset
       returnObj.error = err
-      console.log("first result: ", result.recordset)
       return returnObj
     }).catch((err) => console.log(err))
 }

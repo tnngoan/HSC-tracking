@@ -5,7 +5,6 @@ import { validateContact } from '../../utility/validate'
 
 const FormInput = ({ data }) => {
     const router = useRouter()
-    const [contactInfo, setContactInfo] = useState("")
     const [contactNo, setContactNo] = useState("")
 
     const handleSubmit = (e) => {
