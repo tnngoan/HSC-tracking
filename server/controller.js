@@ -21,27 +21,31 @@ export const connectLocal = async (containerNumber, hblNumber) => { // todo: fix
     .input('inputHBL', sql.VarChar, hblNumber || '')
     .execute('dbo.HSCGetStuffStsByCntrIDOrHBL')
     .then((result, err) => {
-      console.log("result", result)
       returnObj.data = result.recordset
       returnObj.error = err
+      console.log("first result: ", result.recordset)
       return returnObj
     }).catch((err) => console.log(err))
 }
 
 export const insertLocal = async (contact) => {
   let pool = await sql.connect(configLocal);
-  let returnMessage = ''
-  let res = await pool.request()
-    .input('ContactType', sql.VarChar, contactType)
-    .input('ContactNo', sql.VarChar, contactNo)
-    .input('ContainerNo', sql.VarChar, containerNo)
-    .input('HBLNo', sql.VarChar, hblNo)
-    .execute('dbo.HSC_AlertContact')
+  return pool.request()
+    // .input('ContactType', sql.VarChar, 'P')
+    // .input('ContactNo', sql.VarChar, '12345678')
+    // .input('ContainerNo', sql.VarChar, '0637806')
+    // .input('HBLNo', sql.VarChar, 'ATL/SIN/C82879')
+
+    .input('ContactType', sql.VarChar, contact.contactType)
+    .input('ContactNo', sql.VarChar, contact.contactNo)
+    .input('ContainerNo', sql.VarChar, contact.containerNo)
+    .input('HBLNo', sql.VarChar, contact.hblNo)
+
+    .execute('HSCInsertSubcriber')
     .then((res) => {
-      console.log(res.json())
-      return res.json()
+      return res
     }).catch((err) => {
       console.log(err)
-    }) // this is missing something
+    })
 }
 
