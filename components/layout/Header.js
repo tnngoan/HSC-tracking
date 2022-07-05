@@ -1,29 +1,37 @@
+import React, { useState } from 'react'
 import Image from "next/image";
 import Link from "next/link";
 import logo from "../../public/images/logo.png";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronRight, faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import ModalDropdown from "./ModalDropdown";
 import useModal from "./useModal";
+
 const navData = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
-  { name: "Service", href: "/#" },
   { name: "Contact", href: "/contact" },
 ];
+
 const Header = () => {
 
   const { isOpening, toggle } = useModal()
+  const [active, setActive] = useState(false)
 
   return (
     <header className="sticky top-0 z-50 flex py-3 border-b-2 shadow-md bg-white justify-between md:justify-around items-center">
       <div className="relative justify-center pl-2 pt-2">
         <Image src={logo} width={75} height={38} alt="HSC logo" />
       </div>
-      <nav className="hidden md:flex space-x-10 items-center">
+      <nav className="hidden md:flex space-x-10 items-center font-bold">
         {navData.map((n) => {
           return (
-            <Link key={n.name} href={n.href}>
-              {n.name}
-            </Link>
+            <div className="flex justify-between items-center focus:text-green-900 hover:text-green-900 active:text-green-900">
+              <Link key={n.name} href={n.href} onClick={() => setActive(true)}>
+                {n.name}
+              </Link>
+              <FontAwesomeIcon className="px-3" icon={active ? faChevronDown : faChevronRight} />
+            </div>
           );
         })}
       </nav>
