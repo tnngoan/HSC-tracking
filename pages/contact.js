@@ -56,12 +56,6 @@ const Contact = () => {
                                 <a href="https://goo.gl/maps/GYS8pEqXufLxKGbo9">Block 513 Kampong Bahru Road <br /> #02-109 Keppel Distripark Singapore, 099449 </a>
                             </p>
                         </div>
-                        <div className='border-green-900 p-6 bg-white my-2 rounded'>
-                            <FontAwesomeIcon icon={faPhone} size="3x" className='text-green-900 opacity-80' />
-                            <p className="font-semibold items-center pt-6 py-2">
-                                +65-66726111
-                            </p>
-                        </div>
                     </div>
                 </div>
             </div>
