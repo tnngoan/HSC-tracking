@@ -24,7 +24,7 @@ const Header = () => {
       <nav className="hidden md:flex space-x-10 items-center font-bold">
         {navData.map((item) => {
           return (
-            <LinkItem item={item} icon={open} />
+            <LinkItem key={item} item={item} icon={open} />
           );
         })}
       </nav>
