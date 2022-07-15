@@ -7,15 +7,15 @@ import LinkItem from './homepage/LinkItem';
 
 const navData = [
   { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
+  { name: "Our Company", href: "/about" },
 ];
 
 const Header = () => {
 
   const { isOpening, toggle } = useModal()
-  const [active, setActive] = useState(false)
   const [open, setOpen] = useState(false)
+  
   return (
     <header className="sticky top-0 z-50 flex py-3 border-b-2 shadow-md bg-white justify-between md:justify-around items-center">
       <div className="relative justify-center pl-2 pt-2">

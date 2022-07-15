@@ -31,9 +31,7 @@ const Details = () => {
     checkDetails();
   }, [router]);
   return (
-    <>
       <DetailsView data={result} />
-    </>
   );
 };
 
